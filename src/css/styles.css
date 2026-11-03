@@ -1,13 +1,14 @@
+@import './popup.css';
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 16px;
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   color: #242424;
   line-height: 1.5;
 }
