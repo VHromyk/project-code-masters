@@ -4,8 +4,7 @@ import { categoriesListTpl } from './templates/category-card';
 const list = document.querySelector<HTMLUListElement>('.js-categories-list');
 
 function showError(list: HTMLUListElement, message: string): void {
-  list.innerHTML =
-    '<li class="categories-error">Could not load categories</li>';
+  list.innerHTML = `<li class="categories-error">${message}</li>`;
 }
 
 async function renderCategories(
@@ -20,7 +19,7 @@ async function renderCategories(
     if (results.length === 0) {
       showError(
         list,
-        `No categories found for this filter: ${filter} on page ${page}`
+        `No categories found for filter: ${filter} on page ${page}`
       );
       return;
     }
