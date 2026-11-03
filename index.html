@@ -8,15 +8,105 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" crossorigin href="/your-energy/assets/styles-Mn2g_kZN.css">
+    <script type="module" crossorigin src="/your-energy/assets/header-1bS_5ySK.js"></script>
+    <link rel="stylesheet" crossorigin href="/your-energy/assets/header-DrbHJ3CM.css">
   </head>
   <body>
-    <main>
-      <!-- Loads the specified .html file -->
-      Hello world!
-      <ul>
-        <li><a href="./favorites.html">Favorites</a></li>
+<header class="header">
+  <div class="container header__container">
+    <a href="./index.html" class="header__logo" aria-label="Your Energy Home">
+      <svg class="header__logo-icon" width="132" height="24" aria-hidden="true">
+        <use href="/your-energy/assets/sprite-D9jrtN-z.svg#logo"></use>
+      </svg>
+    </a>
+
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="./index.html" class="header__nav-link">Home</a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./favorites.html" class="header__nav-link">Favorites</a>
+        </li>
       </ul>
+    </nav>
+
+    <ul class="header__socials">
+      <li>
+        <a href="https://www.facebook.com/goITclub/" class="header__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+          <svg class="header__social-icon" width="28" height="28" aria-hidden="true">
+            <use href="/your-energy/assets/sprite-D9jrtN-z.svg#facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/goitclub/" class="header__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg class="header__social-icon" width="28" height="28" aria-hidden="true">
+            <use href="/your-energy/assets/sprite-D9jrtN-z.svg#instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/c/GoIT" class="header__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg class="header__social-icon" width="28" height="28" aria-hidden="true">
+            <use href="/your-energy/assets/sprite-D9jrtN-z.svg#youtube"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <button class="header__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg width="32" height="32" aria-hidden="true">
+        <use href="/your-energy/assets/sprite-D9jrtN-z.svg#burger"></use>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+  <button class="mobile-menu__close" aria-label="Close menu">
+    <svg width="32" height="32" aria-hidden="true">
+      <use href="/your-energy/assets/sprite-D9jrtN-z.svg#close"></use>
+    </svg>
+  </button>
+
+  <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+    <ul class="mobile-menu__list">
+      <li>
+        <a href="./index.html" class="mobile-menu__link">Home</a>
+      </li>
+      <li>
+        <a href="./favorites.html" class="mobile-menu__link">Favorites</a>
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="mobile-menu__socials">
+    <li>
+      <a href="https://www.facebook.com/goITclub/" class="mobile-menu__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+        <svg width="28" height="28" aria-hidden="true">
+          <use href="/your-energy/assets/sprite-D9jrtN-z.svg#facebook"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/goitclub/" class="mobile-menu__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg width="28" height="28" aria-hidden="true">
+          <use href="/your-energy/assets/sprite-D9jrtN-z.svg#instagram"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/c/GoIT" class="mobile-menu__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+        <svg width="28" height="28" aria-hidden="true">
+          <use href="/your-energy/assets/sprite-D9jrtN-z.svg#youtube"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</div>
+    <main>
+      Hello world!
     </main>
   </body>
 </html>
