@@ -11,20 +11,20 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/project-code-masters/assets/styles-Bz5h5gN1.js"></script>
-    <script type="module" crossorigin src="/project-code-masters/assets/header-Ca_9dZAd.js"></script>
-    <script type="module" crossorigin src="/project-code-masters/assets/vendor-DzSg3hP9.js"></script>
-    <script type="module" crossorigin src="/project-code-masters/assets/popups-DrVQv5S0.js"></script>
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/styles-BFAMZHBO.css">
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/header-Dr6h90vS.css">
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-Bo7S09Mu.css">
+    <script type="module" crossorigin src="/project-code-masters/favorites.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/vendor-DzSg3hP9.js">
+    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/popups-DNgWXb4H.js">
+    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/pagination-DoSS4SPI.js">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-16sHj0l6.css">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/pagination-wpAU9EKS.css">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/favorites-DxLVLy6t.css">
   </head>
   <body>
 <header class="header">
   <div class="container header__container">
     <a href="./index.html" class="header__logo" aria-label="Your Energy Home">
       <svg class="header__logo-icon" width="132" height="24" aria-hidden="true">
-        <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#logo"></use>
+        <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#logo"></use>
       </svg>
     </a>
 
@@ -43,21 +43,21 @@
       <li>
         <a href="https://www.facebook.com/goITclub/" class="header__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
           <svg class="header__social-icon" width="28" height="28" aria-hidden="true">
-            <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#facebook"></use>
+            <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#facebook"></use>
           </svg>
         </a>
       </li>
       <li>
         <a href="https://www.instagram.com/goitclub/" class="header__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
           <svg class="header__social-icon" width="28" height="28" aria-hidden="true">
-            <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#instagram"></use>
+            <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#instagram"></use>
           </svg>
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/c/GoIT" class="header__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
           <svg class="header__social-icon" width="28" height="28" aria-hidden="true">
-            <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#youtube"></use>
+            <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#youtube"></use>
           </svg>
         </a>
       </li>
@@ -65,7 +65,7 @@
 
     <button class="header__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <svg width="32" height="32" aria-hidden="true">
-        <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#burger"></use>
+        <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#burger"></use>
       </svg>
     </button>
   </div>
@@ -74,7 +74,7 @@
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
   <button class="mobile-menu__close" aria-label="Close menu">
     <svg width="32" height="32" aria-hidden="true">
-      <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#close"></use>
+      <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#close"></use>
     </svg>
   </button>
 
@@ -93,34 +93,40 @@
     <li>
       <a href="https://www.facebook.com/goITclub/" class="mobile-menu__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
         <svg width="28" height="28" aria-hidden="true">
-          <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#facebook"></use>
+          <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#facebook"></use>
         </svg>
       </a>
     </li>
     <li>
       <a href="https://www.instagram.com/goitclub/" class="mobile-menu__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
         <svg width="28" height="28" aria-hidden="true">
-          <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#instagram"></use>
+          <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#instagram"></use>
         </svg>
       </a>
     </li>
     <li>
       <a href="https://www.youtube.com/c/GoIT" class="mobile-menu__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
         <svg width="28" height="28" aria-hidden="true">
-          <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#youtube"></use>
+          <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#youtube"></use>
         </svg>
       </a>
     </li>
   </ul>
 </div>
-    <main>Favorites page</main>
+    <main>
+      <section class="favorites">
+        <div class="container">
+          <ul class="favorites__list" id="favorites-list"></ul>
+        </div>
+      </section>
+    </main>
 
 <!--POPUPS-->
 <div class="popup-backdrop" data-popup-backdrop data-popup-close>
   <!--EXERCISE POPUP-->
   <div class="popup" data-popup id="exercise-popup">
     <button type="button" class="popup-close" aria-label="close popup window" data-popup-close>
-      <svg><use href="/project-code-masters/assets/sprite-CJJOABQO.svg#close-popup"></use></svg>
+      <svg><use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#close-popup"></use></svg>
     </button>
 
     <div class="popup-content" data-exercise-content></div>
@@ -129,7 +135,7 @@
   <!--ADD RATING POPUP-->
   <div class="popup medium" data-popup id="add-rating-popup">
     <button type="button" class="popup-close" data-show-exercise="">
-      <svg><use href="/project-code-masters/assets/sprite-CJJOABQO.svg#close-popup"></use></svg>
+      <svg><use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#close-popup"></use></svg>
     </button>
 
     <form action="#" class="popup-form" novalidate data-form>
@@ -151,35 +157,35 @@
             />
             <label class="star-rating-input-star" for="rate-5" aria-label="5 stars">
               <svg class="star-rating-input-icon" width="19" height="18">
-                <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#rating-star-input"></use>
+                <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#rating-star-input"></use>
               </svg>
             </label>
 
             <input class="star-rating-input-radio" type="radio" name="rate" id="rate-4" value="4" />
             <label class="star-rating-input-star" for="rate-4" aria-label="4 stars">
               <svg class="star-rating-input-icon" width="19" height="18">
-                <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#rating-star-input"></use>
+                <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#rating-star-input"></use>
               </svg>
             </label>
 
             <input class="star-rating-input-radio" type="radio" name="rate" id="rate-3" value="3" />
             <label class="star-rating-input-star" for="rate-3" aria-label="3 stars">
               <svg class="star-rating-input-icon" width="19" height="18">
-                <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#rating-star-input"></use>
+                <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#rating-star-input"></use>
               </svg>
             </label>
 
             <input class="star-rating-input-radio" type="radio" name="rate" id="rate-2" value="2" />
             <label class="star-rating-input-star" for="rate-2" aria-label="2 stars">
               <svg class="star-rating-input-icon" width="19" height="18">
-                <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#rating-star-input"></use>
+                <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#rating-star-input"></use>
               </svg>
             </label>
 
             <input class="star-rating-input-radio" type="radio" name="rate" id="rate-1" value="1" />
             <label class="star-rating-input-star" for="rate-1" aria-label="1 star">
               <svg class="star-rating-input-icon" width="19" height="18">
-                <use href="/project-code-masters/assets/sprite-CJJOABQO.svg#rating-star-input"></use>
+                <use href="/project-code-masters/assets/sprite-CzI6lOhf.svg#rating-star-input"></use>
               </svg>
             </label>
           </div>
@@ -221,5 +227,6 @@
   </div>
 </div>
 
+    <main></main>
   </body>
 </html>
