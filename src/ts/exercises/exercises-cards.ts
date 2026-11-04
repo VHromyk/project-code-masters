@@ -1,5 +1,5 @@
 import spriteUrl from '../../img/sprite.svg?url';
-import type { CardVariant, Exercise } from './types-exercises';
+import type { CardVariant, Exercise } from '../types/exercise';
 
 const ICON_PREFIX = 'card-';
 

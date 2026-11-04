@@ -1,5 +1,5 @@
 import { getExerciseById } from '../popup/exercise-api';
-import type { Exercise } from '../popup/types';
+import type { Exercise } from '../types/exercise';
 import { getFavorites, toggleFavorite } from '../add-to-favorites/favorites-storage';
 import { createExerciseCards } from '../exercises/exercises-cards';
 import { renderPagination } from '../exercises/pagination';

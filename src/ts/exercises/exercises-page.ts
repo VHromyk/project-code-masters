@@ -1,7 +1,7 @@
-import { fetchExercises, type ExercisesParams } from './api-exercises';
+import { fetchExercises } from './api-exercises';
+import type { Exercise, ExerciseOpenDetail, ExercisesParams } from '../types/exercise';
 import { createExerciseCards } from './exercises-cards';
 import { renderPagination } from './pagination';
-import type { Exercise, ExerciseOpenDetail } from './exercises-page';
 
 const EMPTY_TEXT =
   'Unfortunately, no results were found. You may want to consider other search query parameters to find the exercise you are looking for. Try again.';

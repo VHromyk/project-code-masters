@@ -1,4 +1,4 @@
-import type { Exercise } from './types';
+import type { Exercise } from '../types/exercise';
 
 const SPRITE_URL = new URL('../../img/sprite.svg', import.meta.url).href;
 const MAX_RATING = 5;

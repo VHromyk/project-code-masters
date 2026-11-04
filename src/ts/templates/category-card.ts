@@ -1,4 +1,4 @@
-import type { Category } from '../category-types';
+import type { Category } from '../types/category';
 import { escapeHtml } from '../utils/escape-html';
 
 export const categoryCardTemplate = (category: Category): string => `

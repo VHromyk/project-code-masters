@@ -1,6 +1,8 @@
 import axios from 'axios';
+import http from '../api/http';
+import { API_URL } from '../api/config/endpoints';
 
-const SUBSCRIPTION_URL = 'https://your-energy.b.goit.study/api/subscription';
+const SUBSCRIPTION_URL = API_URL.subscription;
 
 const SUCCESS_MESSAGE = 'Thank you for subscribing!';
 const DEFAULT_ERROR_MESSAGE = 'Something went wrong. Please try again later.';
@@ -43,7 +45,7 @@ async function onSubmit(event: SubmitEvent): Promise<void> {
   setLoading(true);
 
   try {
-    await axios.post(SUBSCRIPTION_URL, { email }, { timeout: 10000 });
+    await http.post(SUBSCRIPTION_URL, { email });
     showMessage(SUCCESS_MESSAGE);
     form.reset();
   } catch (error) {

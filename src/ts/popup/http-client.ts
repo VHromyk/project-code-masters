@@ -1,13 +1,11 @@
 import axios from 'axios';
+import http from '../../api/http';
 
 const NETWORK_ERROR_STATUS = 0;
 const NETWORK_ERROR_MESSAGE = 'Check your internet connection and try again.';
 const DEFAULT_ERROR_MESSAGE = 'Something went wrong. Please try again later.';
 
-const api = axios.create({
-  baseURL: 'https://your-energy.b.goit.study/api',
-  timeout: 10000,
-});
+const api = http;
 
 export class ApiError extends Error {
   status: number;
