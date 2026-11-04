@@ -24,10 +24,7 @@ function numberButton(page: number, isActive: boolean): HTMLButtonElement {
   return btn;
 }
 
-export interface PaginationState {
-  page: number;
-  totalPages: number;
-}
+import type { PaginationState } from '../types/pagination';
 
 export function renderPagination(container: HTMLElement, { page, totalPages }: PaginationState): void {
   if (!totalPages || totalPages <= 1) {

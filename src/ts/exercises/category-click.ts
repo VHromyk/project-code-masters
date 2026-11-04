@@ -1,4 +1,4 @@
-import type { FilterName } from './api-exercises';
+import type { FilterName } from '../types/exercise';
 import { exercisesLimit, loadExercises } from './exercises-page';
 
 /**

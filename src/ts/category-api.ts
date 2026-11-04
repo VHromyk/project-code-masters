@@ -1,20 +1,14 @@
-import type { CategoriesResponse } from './category-types';
-
-const BASE_URL = 'https://your-energy.b.goit.study/api';
+import type { CategoriesResponse } from './types/category';
+import http from '../api/http';
+import { API_URL } from '../api/config/endpoints';
 
 export async function getCategories(
   filter: string,
   page: number = 1,
   limit: number = 12
 ): Promise<CategoriesResponse> {
-  const params = new URLSearchParams({
-    filter,
-    page: String(page),
-    limit: String(limit),
+  const { data } = await http.get<CategoriesResponse>(API_URL.filters, {
+    params: { filter, page, limit },
   });
-  const res = await fetch(`${BASE_URL}/filters?${params}`);
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status}`);
-  }
-  return res.json();
+  return data;
 }
