@@ -15,21 +15,32 @@
     <link rel="stylesheet" href="css/exercises.css" />
     <link rel="stylesheet" href="css/pagination.css" />
     <link rel="stylesheet" href="./css/favorites.css" />
+    <link rel="stylesheet" href="./css/quote.css" />
   </head>
   <body>
     <load src="./partials/header.html" />
+
     <main>
-      <section class="favorites">
-        <div class="container">
-          <ul class="favorites__list" id="favorites-list"></ul>
+      <div class="container">
+        <h2 class="section-title">Favorites</h2>
+        <div class="page-layout page-layout--favorites">
+          <div class="page-layout__quote">
+            <load src="./partials/quote.html" />
+          </div>
+          <div class="page-layout__main">
+            <ul class="favorites__list" id="favorites-list"></ul>
+          </div>
         </div>
-      </section>
+      </div>
     </main>
+
     <load src="./partials/footer.html" />
     <load src="./partials/popups.html" />
+
     <script type="module" src="./ts/header.ts"></script>
     <script type="module" src="./ts/exercises/favorites-page.ts"></script>
     <script type="module" src="./ts/subscription.ts"></script>
     <script type="module" src="./ts/popups.ts"></script>
+    <script type="module" src="./ts/quote.ts"></script>
   </body>
 </html>
