@@ -117,8 +117,19 @@ Pages, у гілку `gh-pages`, щоразу, коли оновлюється �
 Спливаючі вікна (попапи) працюють через один спільний backdrop, всередині
 якого лежать усі попапи. Відкрити можна з HTML через data-атрибут або з коду.
 
+### Підключення
+
+Усе, що стосується попапів (сам попап, попап вправи, кнопка обраного),
+підключається одним файлом `src/ts/popups.ts`:
+
+```html
+<load src="./partials/popups.html" />
+<script type="module" src="./ts/popups.ts"></script>
+```
+
 ### Файли
 
+- `src/ts/popups.ts` — точка входу
 - `src/ts/popup/popup.ts` — логіка (клас `PopupManager`)
 - `src/css/popup.css` — стилі та анімації
 - `src/partials/popups.html` — розмітка backdrop і попапів
@@ -126,7 +137,7 @@ Pages, у гілку `gh-pages`, щоразу, коли оновлюється �
 ### Як додати новий попап
 
 Додати блок з `data-popup` і унікальним `id` всередину `.popup-backdrop` у
-`popups.html`. Наприклад, так зроблений попап рейтингу:
+`popups.html`:
 
 ```html
 <div class="popup medium" data-popup id="add-rating-popup">
@@ -198,3 +209,34 @@ window.popup.close();
 | Помилки | Немає інтернету, 404 або інша помилка — показується повідомлення |
 | Швидкі кліки | Показується тільки остання відкрита вправа |
 | Give a rating | Перемикає на попап рейтингу |
+| Add to favorites | Додає / видаляє вправу з обраного (див. нижче) |
+
+## ADD TO FAVORITES
+
+Кнопка додає вправу в обране або видаляє її звідти. В `localStorage` під
+ключем `favorites` зберігається масив `id` вправ.
+
+### Файли
+
+- `src/ts/add-to-favorites/favorites-storage.ts` — робота з `localStorage`
+- `src/ts/add-to-favorites/favorites-button.ts` — клік по кнопці
+
+### Як використати
+
+Будь-якому елементу додаємо атрибут `data-add-to-favorites` з `id` вправи:
+
+```html
+<button type="button" data-add-to-favorites="64f389465ae26083f39b17a2">Add to favorites</button>
+```
+
+Працює і для елементів, доданих динамічно.
+
+### Можливості
+
+| Що | Як працює |
+| --- | --- |
+| Клік | Якщо вправи немає в обраному — додає, якщо є — видаляє |
+| Клас `is-favorite` | Додається на кнопку, коли вправа в обраному |
+| `getFavorites()` | Повертає масив `id` з обраного |
+| `isFavorite(id)` | Перевіряє, чи є вправа в обраному |
+| `updateFavoriteButtons(root)` | Ставить правильний стан усім кнопкам у блоці, наприклад після рендеру карток |

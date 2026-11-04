@@ -11,3 +11,9 @@ export interface Exercise {
   time?: number;
   popularity?: number;
 }
+
+export interface RatingPayload {
+  rate: number;
+  email: string;
+  review: string;
+}

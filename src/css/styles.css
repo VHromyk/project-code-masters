@@ -9,6 +9,7 @@
   --color-social: #242424;
   --color-border: rgba(36, 36, 36, 0.1);
   --color-gold: #eea10c;
+  --color-invalid: #b71d1d;
 }
 
 * {

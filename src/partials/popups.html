@@ -1,31 +1,110 @@
 <link rel="stylesheet" href="./css/popup.css" />
+<link rel="stylesheet" href="./css/popup-form.css" />
 <link rel="stylesheet" href="./css/star-rating.css" />
+<link rel="stylesheet" href="./css/star-rating-input.css" />
 
 <!--POPUPS-->
 <div class="popup-backdrop" data-popup-backdrop data-popup-close>
-  <!--exercise-popup-->
+  <!--EXERCISE POPUP-->
   <div class="popup" data-popup id="exercise-popup">
-    <button
-      type="button"
-      class="popup-close"
-      aria-label="close popup window"
-      data-popup-close
-    >
+    <button type="button" class="popup-close" aria-label="close popup window" data-popup-close>
       <svg><use href="./img/sprite.svg#close-popup"></use></svg>
     </button>
 
     <div class="popup-content" data-exercise-content></div>
   </div>
 
-  <!--exercise-popup-->
-  <div class="popup medium pending" data-popup id="add-rating-popup">
-    <button
-      type="button"
-      class="popup-close"
-      aria-label="close popup window"
-      data-popup-close
-    >
+  <!--ADD RATING POPUP-->
+  <div class="popup medium" data-popup id="add-rating-popup">
+    <button type="button" class="popup-close" data-show-exercise="">
       <svg><use href="./img/sprite.svg#close-popup"></use></svg>
     </button>
+
+    <form action="#" class="popup-form" novalidate data-form>
+      <fieldset class="star-rating-input">
+        <legend class="label-text">Rating</legend>
+
+        <div class="star-rating-input-row">
+          <span class="star-rating-input-value" data-rate-value>0.0</span>
+
+          <div class="star-rating-input-stars">
+            <input
+              class="star-rating-input-radio"
+              type="radio"
+              name="rate"
+              id="rate-5"
+              value="5"
+              required
+              data-error="Please choose a rating"
+            />
+            <label class="star-rating-input-star" for="rate-5" aria-label="5 stars">
+              <svg class="star-rating-input-icon" width="19" height="18">
+                <use href="./img/sprite.svg#rating-star-input"></use>
+              </svg>
+            </label>
+
+            <input class="star-rating-input-radio" type="radio" name="rate" id="rate-4" value="4" />
+            <label class="star-rating-input-star" for="rate-4" aria-label="4 stars">
+              <svg class="star-rating-input-icon" width="19" height="18">
+                <use href="./img/sprite.svg#rating-star-input"></use>
+              </svg>
+            </label>
+
+            <input class="star-rating-input-radio" type="radio" name="rate" id="rate-3" value="3" />
+            <label class="star-rating-input-star" for="rate-3" aria-label="3 stars">
+              <svg class="star-rating-input-icon" width="19" height="18">
+                <use href="./img/sprite.svg#rating-star-input"></use>
+              </svg>
+            </label>
+
+            <input class="star-rating-input-radio" type="radio" name="rate" id="rate-2" value="2" />
+            <label class="star-rating-input-star" for="rate-2" aria-label="2 stars">
+              <svg class="star-rating-input-icon" width="19" height="18">
+                <use href="./img/sprite.svg#rating-star-input"></use>
+              </svg>
+            </label>
+
+            <input class="star-rating-input-radio" type="radio" name="rate" id="rate-1" value="1" />
+            <label class="star-rating-input-star" for="rate-1" aria-label="1 star">
+              <svg class="star-rating-input-icon" width="19" height="18">
+                <use href="./img/sprite.svg#rating-star-input"></use>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="popup-form-fieldset">
+        <label class="popup-form-label">
+          <input
+            type="email"
+            name="email"
+            class="popup-input"
+            placeholder="Email"
+            required
+            pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+            data-error="Please enter a valid email"
+          />
+        </label>
+
+        <label class="popup-form-label">
+          <textarea
+            name="review"
+            class="popup-input textarea"
+            placeholder="Your comment"
+            required
+            data-error="Please leave a comment"
+          ></textarea>
+        </label>
+      </fieldset>
+
+      <div class="form-errors" data-form-errors></div>
+
+      <div class="popup-buttons">
+        <button type="submit" class="popup-button white">
+          <span>Send</span>
+        </button>
+      </div>
+    </form>
   </div>
 </div>
