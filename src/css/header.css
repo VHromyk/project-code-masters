@@ -44,7 +44,9 @@
   font-weight: 500;
   color: var(--color-nav-text);
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .header__nav-link:hover,
@@ -106,14 +108,18 @@
   padding: 16px;
   transform: translateX(100%);
   visibility: hidden;
-  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
   z-index: 200;
 }
 
 .mobile-menu.is-open {
   transform: translateX(0);
   visibility: visible;
-  transition: transform 0.3s ease, visibility 0s linear 0s;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0s;
 }
 
 .mobile-menu__close {

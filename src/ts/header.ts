@@ -36,6 +36,6 @@ function closeMenu() {
 burger?.addEventListener('click', openMenu);
 closeBtn?.addEventListener('click', closeMenu);
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeMenu();
 });

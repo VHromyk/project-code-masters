@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #F4F4F4;
+  --color-bg: #f4f4f4;
   --color-text: #242424;
   --color-white: #fff;
   --color-nav-bg: #242424;
@@ -8,6 +8,8 @@
   --color-nav-active-text: #242424;
   --color-social: #242424;
   --color-border: rgba(36, 36, 36, 0.1);
+  --color-gold: #eea10c;
+  --color-invalid: #b71d1d;
 }
 
 * {
@@ -15,7 +17,7 @@
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-bg);
