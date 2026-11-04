@@ -1,11 +1,11 @@
 {
-  "name": "your-energy",
+  "name": "project-code-masters",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/your-energy/",
+    "build": "vite build --base=/project-code-masters/",
     "preview": "vite preview"
   },
   "devDependencies": {
