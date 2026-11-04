@@ -85,6 +85,7 @@
 
 .footer__form {
   grid-area: form;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -122,6 +123,24 @@
   border-color: var(--color-white);
 }
 
+.footer__input:user-invalid {
+  border-color: #ff6b6b;
+}
+
+.footer__form-message {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 14px;
+  right: 14px;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-bg);
+}
+
+.footer__form-message.is-error {
+  color: #ff6b6b;
+}
+
 .footer__button {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -133,6 +152,11 @@
 .footer__button:hover,
 .footer__button:focus-visible {
   opacity: 0.8;
+}
+
+.footer__button:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 /* ── Bottom row ── */

@@ -44,9 +44,12 @@
         name="email"
         placeholder="Email"
         autocomplete="email"
+        pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        title="Enter a valid email"
         required
       />
       <button class="footer__button" type="submit">Send</button>
+      <p class="footer__form-message" data-subscription-message aria-live="polite"></p>
     </form>
 
     <p class="footer__copyright">Your Energy. All rights reserved.</p>
