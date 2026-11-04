@@ -12,13 +12,23 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="css/exercises.css" />
+    <link rel="stylesheet" href="css/pagination.css" />
+    <link rel="stylesheet" href="./css/favorites.css" />
   </head>
   <body>
     <load src="./partials/header.html" />
-    <main>Favorites page</main>
+    <main>
+      <section class="favorites">
+        <div class="container">
+          <ul class="favorites__list" id="favorites-list"></ul>
+        </div>
+      </section>
+    </main>
     <load src="./partials/footer.html" />
     <load src="./partials/popups.html" />
     <script type="module" src="./ts/header.ts"></script>
+    <script type="module" src="./ts/exercises/favorites-page.ts"></script>
     <script type="module" src="./ts/popups.ts"></script>
   </body>
 </html>
