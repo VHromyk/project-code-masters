@@ -27,10 +27,18 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+  padding: 0;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 0;
 }
 
 body,
 h2,
+h3,
 ul,
 li,
 p {

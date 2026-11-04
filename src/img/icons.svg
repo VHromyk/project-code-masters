@@ -1,0 +1,8 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-search" viewBox="0 0 18 18" fill="none">
+      <path d="M14.25 8.25C14.25 11.5637 11.5637 14.25 8.25 14.25C4.93629 14.25 2.25 11.5637 2.25 8.25C2.25 4.93629 4.93629 2.25 8.25 2.25C11.5637 2.25 14.25 4.93629 14.25 8.25Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M15.7498 15.75L12.4873 12.4875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+  </defs>
+</svg>
