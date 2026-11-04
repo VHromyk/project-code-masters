@@ -1,0 +1,74 @@
+.star-rating-input .label-text {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-bg);
+  opacity: 0.4;
+}
+
+.star-rating-input-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-rating-input-value {
+  min-width: 19px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-bg);
+}
+
+.star-rating-input-stars {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2px;
+}
+
+.star-rating-input-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.star-rating-input-star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  color: rgba(244, 244, 244, 0.2);
+  transition: color 250ms ease;
+}
+
+.star-rating-input-icon {
+  display: block;
+  width: 19px;
+  height: 18px;
+}
+
+.star-rating-input-radio:checked ~ .star-rating-input-star {
+  color: var(--color-gold);
+}
+
+.star-rating-input-stars:hover .star-rating-input-star {
+  color: rgba(244, 244, 244, 0.2);
+}
+
+.star-rating-input-stars .star-rating-input-star:hover,
+.star-rating-input-stars
+  .star-rating-input-star:hover
+  ~ .star-rating-input-star {
+  color: var(--color-gold);
+}
+
+.star-rating-input-radio:focus-visible + .star-rating-input-star {
+  outline: 1px solid var(--color-bg);
+  outline-offset: 1px;
+  border-radius: 4px;
+}

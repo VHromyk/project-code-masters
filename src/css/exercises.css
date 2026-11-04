@@ -1,0 +1,229 @@
+.icon {
+  flex: none;
+  display: block;
+}
+
+.exercise-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 141px;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
+}
+
+.exercise-card__top {
+  display: flex;
+  align-items: center;
+}
+
+.exercise-card__badge {
+  padding: 5px 8px;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: normal;
+}
+
+
+.exercise-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 16px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.exercise-card__rating .icon {
+  color: var(--color-gold);
+}
+
+.exercise-card__remove {
+  display: grid;
+  place-items: center;
+  margin-left: 8px;
+  padding: 0;
+  background: none;
+  color: var(--color-text);
+  transition: opacity 0.2s;
+}
+
+.exercise-card__remove:hover {
+  opacity: 0.6;
+}
+
+.exercise-card__start {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 0;
+  background: none;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-text);
+  cursor:pointer;
+}
+
+.exercise-card__start .icon {
+  transition: transform 0.25s ease;
+}
+
+.exercise-card__start:hover .icon,
+.exercise-card__start:focus-visible .icon {
+  transform: translateX(4px);
+}
+
+.exercise-card__start,
+.exercise-card__remove {
+  cursor: pointer;
+}
+
+.exercise-card__start .icon,
+.exercise-card__remove .icon {
+  pointer-events: none;
+}
+
+.exercise-card__remove:focus-visible,
+.exercise-card__start:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.exercise-card__title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.exercise-card__name {
+  min-width: 0;
+  min-height: 24px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.exercise-card__info {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.exercise-card__info li {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.exercise-card__info span {
+  color: var(--color-text-muted);
+  margin-right: 2px;
+}
+
+
+.exercises__content {
+  position: relative;
+  min-height: 120px;
+}
+
+.exercises__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.exercises__message {
+  max-width: 554px;
+  margin: 40px auto;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-text);
+}
+
+.exercises__message[hidden],
+.exercises__loader[hidden] {
+  display: none;
+}
+
+.exercises__loader {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-text);
+  border-radius: 50%;
+  animation: exercises-spin 0.8s linear infinite;
+}
+
+@keyframes exercises-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ── Tablet ── */
+@media (min-width: 768px) {
+  .exercise-card__start {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .exercise-card__name {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .exercise-card__info {
+    padding-top: 8px;
+  }
+
+  .exercise-card__info li {
+    gap: 4px;
+  }
+
+  .exercises__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 16px;
+  }
+
+  .exercises__message {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+/* ── Desktop ── */
+@media (min-width: 1440px) {
+  .exercise-card__info {
+    column-gap: 16px;
+  }
+
+  .exercises__content {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+  }
+
+  
+}

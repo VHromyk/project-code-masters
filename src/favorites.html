@@ -7,14 +7,29 @@
     <title>Favorites</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="css/exercises.css" />
+    <link rel="stylesheet" href="css/pagination.css" />
+    <link rel="stylesheet" href="./css/favorites.css" />
   </head>
   <body>
     <load src="./partials/header.html" />
     <main>
-      Favorites page
+      <section class="favorites">
+        <div class="container">
+          <ul class="favorites__list" id="favorites-list"></ul>
+        </div>
+      </section>
     </main>
+    <load src="./partials/footer.html" />
+    <load src="./partials/popups.html" />
     <script type="module" src="./ts/header.ts"></script>
+    <script type="module" src="./ts/exercises/favorites-page.ts"></script>
+    <script type="module" src="./ts/subscription.ts"></script>
+    <script type="module" src="./ts/popups.ts"></script>
   </body>
 </html>

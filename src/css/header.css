@@ -11,6 +11,7 @@
 
 .header__logo {
   display: flex;
+  color: var(--color-text);
   align-items: center;
   flex-shrink: 0;
 }
@@ -44,7 +45,9 @@
   font-weight: 500;
   color: var(--color-nav-text);
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .header__nav-link:hover,
@@ -66,20 +69,30 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-social);
-  transition: opacity 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
-.header__social-link:hover {
-  opacity: 0.6;
+.header__social-link:hover,
+.header__social-link:focus-visible {
+  background-color: rgba(36, 36, 36, 0.8);
+  color: var(--color-bg);
 }
 
 .header__social-icon {
   fill: currentColor;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.header__social-link:hover .header__social-icon,
+.header__social-link:focus-visible .header__social-icon {
+  opacity: 1;
 }
 
 /* Burger button — mobile only */
@@ -106,14 +119,18 @@
   padding: 16px;
   transform: translateX(100%);
   visibility: hidden;
-  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
   z-index: 200;
 }
 
 .mobile-menu.is-open {
   transform: translateX(0);
   visibility: visible;
-  transition: transform 0.3s ease, visibility 0s linear 0s;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0s;
 }
 
 .mobile-menu__close {

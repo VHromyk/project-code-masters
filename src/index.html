@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,15 +7,31 @@
     <title>Your Energy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="module" src="./ts/filters.ts"></script>
+    <link rel="stylesheet" href="css/category-card.css" />
+    <link rel="stylesheet" href="css/exercises.css" />
+    <link rel="stylesheet" href="css/pagination.css" />
   </head>
   <body>
-    <load src="./partials/header.html"/>
+    <load src="./partials/header.html" />
     <main>
-      <load src="./partials/filters-block.html"/>
+      <load src="./partials/filters-block.html" />
+      <load src="./partials/hero.html" />
+      <load src="./partials/categories.html" />
+      <load src="./partials/exercises.html" />
     </main>
+    <load src="./partials/footer.html" />
+    <load src="./partials/popups.html" />
     <script type="module" src="./ts/header.ts"></script>
+    <script type="module" src="./ts/filters.ts"></script>
+    <script type="module" src="./ts/subscription.ts"></script>
+    <script type="module" src="./ts/category-main.ts"></script>
+    <script type="module" src="./ts/popups.ts"></script>
+    <script type="module" src="./ts/exercises/category-click.ts"></script>
+    <script type="module" src="./ts/category-main.ts"></script>
   </body>
 </html>
