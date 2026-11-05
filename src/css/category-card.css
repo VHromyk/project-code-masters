@@ -38,13 +38,6 @@
   color: #f4f4f466;
 }
 
-.categories-title {
-  font-size: 44px;
-  font-weight: 400;
-  line-height: 48px;
-  letter-spacing: -0.02em;
-}
-
 .categories-error {
   grid-column: 1 / -1;
   text-align: center;

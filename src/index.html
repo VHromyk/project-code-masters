@@ -15,22 +15,37 @@
     <link rel="stylesheet" href="css/category-card.css" />
     <link rel="stylesheet" href="css/exercises.css" />
     <link rel="stylesheet" href="css/pagination.css" />
+    <link rel="stylesheet" href="./css/quote.css" />
   </head>
   <body>
     <load src="./partials/header.html" />
+
     <main>
       <load src="./partials/hero.html" />
-      <load src="./partials/categories.html" />
-      <load src="./partials/exercises.html" />
+      <div class="container">
+        <h2 class="section-title">Exercises</h2>
+        <div class="page-layout">
+          <div class="page-layout__quote">
+            <load src="./partials/quote.html" />
+          </div>
+          <div class="page-layout__main">
+            <load src="./partials/categories.html" />
+            <load src="./partials/exercises.html" />
+          </div>
+        </div>
+      </div>
     </main>
+
     <load src="./partials/footer.html" />
     <load src="./partials/popups.html" />
     <load src="./partials/scroll-up.html" />
+
     <script type="module" src="./ts/header.ts"></script>
     <script type="module" src="./ts/subscription.ts"></script>
     <script type="module" src="./ts/category-main.ts"></script>
     <script type="module" src="./ts/popups.ts"></script>
     <script type="module" src="./ts/exercises/category-click.ts"></script>
+    <script type="module" src="./ts/quote.ts"></script>
     <script type="module" src="./ts/category-main.ts"></script>
     <script type="module" src="./ts/scroll-up.ts"></script>
   </body>
