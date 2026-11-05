@@ -1,3 +1,4 @@
+import { changeFiltersState, updateCategoryName } from '../filters/states';
 import type { FilterName } from '../types/exercise';
 import { exercisesLimit, loadExercises } from './exercises-page';
 
@@ -15,6 +16,9 @@ categoriesList?.addEventListener('click', event => {
   if (!filter || !name) return;
 
   categoriesList.style.display = 'none';
+  changeFiltersState();
+  updateCategoryName(name);
+
   if (exercisesSection) exercisesSection.hidden = false;
 
   void loadExercises({ filter: filter as FilterName, category: name, page: 1, limit: exercisesLimit() });

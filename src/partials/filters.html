@@ -1,16 +1,15 @@
-<link rel="stylesheet" href="./css/filters-block.css" />
-<div id="filters-block" class="container filters-block">
+<div id="filters-block" class="container filters-block" data-state="categories">
   <div class="filters-block-header-wrapper">
     <h2 class="filters-block-header">
-      Exercises<span class="exercises-page-element"> /</span>
+      Exercises<span> /</span>
     </h2>
-    <h3 class="filters-block-subheader exercises-page-element">Waist</h3>
+    <h3 class="filters-block-subheader">Waist</h3>
   </div>
-  <div class="filters-block-wrapper">
-    <div class="filters-block-input-wrapper exercises-page-element">
-      <input class="filters-block-input" type="text" placeholder="Search" />
-      <button class="filters-block-input-button" type="button">
-        <svg class="filters-block-input-icon" width="18" height="18">
+  <form class="filters-block-form">
+    <div class="filters-block-search-input-wrapper">
+      <input class="filters-block-search-input" type="text" name="search" placeholder="Search" />
+      <button class="filters-block-search-input-button">
+        <svg class="filters-block-search-input-icon" width="18" height="18">
           <use href="../img/icons.svg#icon-search" />
         </svg>
       </button>
@@ -44,5 +43,7 @@
         </button>
       </li>
     </ul>
-  </div>
+    <input class="filters-block-filter-input" type="hidden" name="filter" value="Muscles" />
+    <input class="filters-block-category-input" type="hidden" name="category" value="" />
+  </form>
 </div>

@@ -68,28 +68,28 @@
   }
 }
 
-.filters-block-wrapper {
+.filters-block-form {
   display: flex;
   align-items: start;
   gap: 30px;
 }
 
 @media (max-width: 1440px) {
-  .filters-block-wrapper {
+  .filters-block-form {
     width: 100%;
     justify-content: space-between;
   }
 }
 
 @media (max-width: 768px) {
-  .filters-block-wrapper {
+  .filters-block-form {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
 }
 
-.filters-block-input-wrapper {
+.filters-block-search-input-wrapper {
   position: relative;
   width: 273px;
   padding: 12px 44px 12px 14px;
@@ -99,12 +99,12 @@
 }
 
 @media (max-width: 768px) {
-  .filters-block-input-wrapper {
+  .filters-block-search-input-wrapper {
     width: 100%;
   }
 }
 
-.filters-block-input {
+.filters-block-search-input {
   display: block;
   border: none;
   width: 100%;
@@ -117,13 +117,13 @@
 }
 
 @media (max-width: 768px) {
-  .filters-block-input {
+  .filters-block-search-input {
     font-size: 14px;
     line-height: 1.43;
   }
 }
 
-.filters-block-input-button {
+.filters-block-search-input-button {
   position: absolute;
   top: 50%;
   right: 14px;
@@ -132,7 +132,7 @@
   height: 18px;
 }
 
-.filters-block-input-icon {
+.filters-block-search-input-icon {
   stroke: #242424;
 }
 
@@ -185,6 +185,12 @@
   border-radius: 2px;
 }
 
-.exercises-page-element {
+.filters-block[data-state="categories"] .filters-block-subheader,
+.filters-block[data-state="categories"] .filters-block-search-input-wrapper, 
+.filters-block[data-state="categories"] .filters-block-header>span {
   display: none;
+}
+
+.filters-block[data-state="exercises"] .filters-block-list-button {
+  cursor: default;
 }
