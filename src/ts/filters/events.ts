@@ -49,7 +49,9 @@ function updateCloseButtonHiding() {
 }
 
 async function handleFilterClick(event: Event) {
-  if (!(event.target instanceof Element)) return;
+  if (refs.filtersBlock?.dataset.state === 'exercises') {
+    return;
+  }
 
   const target = event.target as HTMLElement;
   if (target?.nodeName !== 'SPAN') {
