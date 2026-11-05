@@ -35,7 +35,7 @@ function setCurrentFilter(filter: Filter) {
 async function renderExercisesByFormData(form: HTMLFormElement) {
   const category = (form.elements.namedItem('category') as HTMLInputElement)?.value;
   const filter = (form.elements.namedItem('filter') as HTMLInputElement)?.value as Filter;
-  const keyword = (form.elements.namedItem('search') as HTMLInputElement)?.value;
+  const keyword = (form.elements.namedItem('search') as HTMLInputElement)?.value.trim();
   const limit = exercisesLimit();
   await loadExercises({ category, filter, keyword, page: 1, limit });
 }
@@ -62,49 +62,6 @@ async function handleFilterClick(event: Event) {
   const limit = categoriesLimit();
 
   await renderCategories(filter, 1, limit);
-}
-
-let searchTimer: ReturnType<typeof setTimeout> | undefined;
-
-async function searchExercises(): Promise<void> {
-  clearTimeout(searchTimer);
-
-  if (refs.filtersBlock?.dataset.state !== 'exercises') return;
-  if (!refs.form) return;
-
-  const categoryInput = refs.form.elements.namedItem(
-    'category'
-  ) as HTMLInputElement | null;
-
-  const filterInput = refs.form.elements.namedItem(
-    'filter'
-  ) as HTMLInputElement | null;
-
-  const searchInput = refs.form.elements.namedItem(
-    'search'
-  ) as HTMLInputElement | null;
-
-  const category = categoryInput?.value.trim();
-  const filter = filterInput?.value;
-  const keyword = searchInput?.value.trim();
-
-  if (!category) return;
-
-  if (
-    filter !== Filter.Muscles &&
-    filter !== Filter.BodyParts &&
-    filter !== Filter.Equipment
-  ) {
-    return;
-  }
-
-  await loadExercises({
-    category,
-    filter,
-    keyword: keyword || undefined,
-    page: 1,
-    limit: exercisesLimit(),
-  });
 }
 
 async function handleFormSubmit(event: Event) {
