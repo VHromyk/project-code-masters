@@ -67,3 +67,24 @@
     margin-left: auto;
   }
 }
+
+#exercises .pagination__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  #exercises .pagination {
+    padding-bottom: 64px;
+  }
+
+  #exercises .pagination__btn {
+    font-size: 16px;
+  }
+}
