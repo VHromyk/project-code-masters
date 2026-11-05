@@ -102,5 +102,14 @@
     <symbol id="arrowUp" viewBox="0 0 14 13" >
       <path d="M7.17209 2.29169L7.17209 12.503L6.08573 12.503L6.08573 2.29169L0.980089 7.39733L0.211914 6.62915L6.62891 0.212157L13.0459 6.62915L12.2777 7.39733L7.17209 2.29169Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
     </symbol>
+    
+    <symbol id="search" viewBox="0 0 18 18" fill="none">
+      <path d="M14.25 8.25C14.25 11.5637 11.5637 14.25 8.25 14.25C4.93629 14.25 2.25 11.5637 2.25 8.25C2.25 4.93629 4.93629 2.25 8.25 2.25C11.5637 2.25 14.25 4.93629 14.25 8.25Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M15.7498 15.75L12.4873 12.4875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="close" viewBox="0 0 18 18" fill="none">
+      <path d="M12.75 5.25L9 9M9 9L5.25 12.75M9 9L5.25 5.25M9 9L12.75 12.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+
   </defs>
 </svg>
