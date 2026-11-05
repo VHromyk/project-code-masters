@@ -44,11 +44,11 @@
     width: 100%;
     max-width: 826px;
     margin-left: auto;
-    max-height: 487px;
-    overflow-y: auto;
   }
 
   .favorites__list.has-scroll {
+    max-height: 487px;
+    overflow-y: auto;
     padding-right: 16px;
   }
 

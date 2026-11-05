@@ -103,6 +103,7 @@ img {
 /* ── Section title ── */
 
 .section-title {
+  margin: 0 0 20px;
   font-size: 28px;
   line-height: 38px;
   font-weight: 400;
@@ -111,6 +112,7 @@ img {
 
 @media (min-width: 768px) {
   .section-title {
+    margin-bottom: 32px;
     font-size: 44px;
     line-height: 48px;
   }
@@ -119,7 +121,7 @@ img {
 /* ── Home page layout ── */
 
 .page-layout {
-  padding: 20px 0 80px;
+  padding: 0 0 80px;
   display: flex;
   flex-direction: column-reverse;
   gap: 80px;
@@ -131,14 +133,14 @@ img {
 
 @media (min-width: 768px) {
   .page-layout {
-    padding: 32px 0 100px;
+    padding: 0 0 100px;
     gap: 64px;
   }
 }
 
 @media (min-width: 1440px) {
   .page-layout {
-    padding: 32px 0 132px;
+    padding: 0 0 132px;
     flex-direction: row;
     align-items: flex-start;
     gap: 32px;
