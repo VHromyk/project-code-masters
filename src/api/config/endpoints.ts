@@ -3,5 +3,6 @@ export const API_URL = {
   exercises: '/exercises',
   exerciseById: (id: string) => `/exercises/${encodeURIComponent(id)}`,
   exerciseRating: (id: string) => `/exercises/${encodeURIComponent(id)}/rating`,
+  quote: '/quote',
   subscription: '/subscription',
 } as const;
