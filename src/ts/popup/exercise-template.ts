@@ -51,21 +51,21 @@ export function createExerciseMarkup(exercise: Exercise): string {
       ${head ? `<div class="exercise-content-head">${head}</div>` : ''}
       ${infoItems ? `<ul class="exercise-info">${infoItems}</ul>` : ''}
       ${description ? `<p class="exercise-description">${description}</p>` : ''}
+    </div>
 
-      <ul class="popup-buttons">
-        <li>
-          <button type="button" class="popup-button white" data-add-to-favorites="${_id}">
-            <span>Add to favorites</span>
-            <svg><use href="${SPRITE_URL}#heart"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="popup-button" data-popup-open="add-rating-popup" data-rate-exercise="${_id}">
-            <span>Give a rating</span>
-          </button>
-        </li>
-      </ul>
-    </div>`;
+    <ul class="popup-buttons">
+      <li>
+        <button type="button" class="popup-button white" data-add-to-favorites="${_id}">
+          <span>Add to favorites</span>
+          <svg><use href="${SPRITE_URL}#heart"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="popup-button" data-popup-open="add-rating-popup" data-rate-exercise="${_id}">
+          <span>Give a rating</span>
+        </button>
+      </li>
+    </ul>`;
 }
 
 function createStars(rating: number): string {

@@ -250,15 +250,15 @@ body.locked {
 .popup-buttons {
   display: flex;
   width: 100%;
+  flex: 1 1 100%;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px 7px;
-  margin-top: auto;
-  align-self: flex-end;
 }
 
 .popup-buttons li {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .popup-button {
@@ -291,7 +291,7 @@ body.locked {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .popup-button svg {
@@ -304,8 +304,8 @@ body.locked {
     color 250ms ease;
 }
 
-.popup-button.is-favorite svg {
-  fill: currentColor;
+.popup-button.popup-button--remove svg {
+  fill: none;
 }
 
 .popup-buttons .popup-button {
