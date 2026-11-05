@@ -1,22 +1,19 @@
 import http from '../api/http';
 import { API_URL } from '../api/config/endpoints';
+import type { QuoteResponse, StoredQuote } from './types/quote';
+import favImg1x from '../img/quote-photo-favorites@1x.jpg';
+import favImg2x from '../img/quote-photo-favorites@2x.jpg';
+import favDesktopImg1x from '../img/quote-photo-favorites-desktop@1x.jpg';
+import favDesktopImg2x from '../img/quote-photo-favorites-desktop@2x.jpg';
+import spriteUrl from '../img/sprite.svg';
 
 const STORAGE_KEY = 'quote';
 
 const DEFAULT_QUOTE = {
   author: 'Tom Brady',
   quote:
-    'A lot of times I find that people who are blessed with the most talent don’t ever develop that attitude, and the ones who aren’t blessed in that way are the most competitive and have the biggest heart.',
+    "A lot of times I find that people who are blessed with the most talent don't ever develop that attitude, and the ones who aren't blessed in that way are the most competitive and have the biggest heart.",
 };
-
-interface QuoteResponse {
-  author: string;
-  quote: string;
-}
-
-interface StoredQuote extends QuoteResponse {
-  date: string;
-}
 
 function getTodayDate(): string {
   return new Date().toISOString().slice(0, 10);
@@ -57,22 +54,20 @@ function applyPageModifier(): void {
   if (!isHome) {
     const source = section.querySelector<HTMLSourceElement>('.quote-section__source--lg');
     if (source) {
-      source.srcset =
-        './img/quote-photo-favorites-desktop@1x.jpg 1x, ./img/quote-photo-favorites-desktop@2x.jpg 2x';
+      source.srcset = `${favDesktopImg1x} 1x, ${favDesktopImg2x} 2x`;
     }
 
     const img = section.querySelector<HTMLImageElement>('.quote-section__image');
     if (img) {
-      img.src = './img/quote-photo-favorites@1x.jpg';
-      img.srcset =
-        './img/quote-photo-favorites@1x.jpg 1x, ./img/quote-photo-favorites@2x.jpg 2x';
+      img.src = favImg1x;
+      img.srcset = `${favImg1x} 1x, ${favImg2x} 2x`;
     }
 
     const iconUse = section.querySelector<SVGUseElement>(
       '.quote-section__stats-icon use'
     );
     if (iconUse) {
-      iconUse.setAttribute('href', './img/sprite.svg#dumbbell-favorites');
+      iconUse.setAttribute('href', `${spriteUrl}#dumbbell-favorites`);
     }
 
     const iconSvg = section.querySelector<SVGElement>(
