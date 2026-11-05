@@ -81,10 +81,8 @@ if (!list) {
 
     renderPagination(pagination, { page, totalPages: validTotalPages });
 
-    list!.classList.toggle(
-      'has-scroll',
-      list!.scrollHeight > list!.clientHeight
-    );
+    // Desktop: 2 columns → 6 cards = 3 rows (no scroll), from 7th card scroll appears
+    list!.classList.toggle('has-scroll', desktop.matches && items.length >= 7);
   }
 
   const refresh = (): void => void render();
