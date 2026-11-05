@@ -13,11 +13,11 @@
     />
     <script type="module" crossorigin src="/project-code-masters/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-code-masters/assets/vendor-DzSg3hP9.js">
-    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/popups-BvL5gMj4.js">
-    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/quote-D3nuLnTm.js">
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-1B0uzC46.css">
+    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/popups-d7nTOWla.js">
+    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/quote-C7XG4wdc.js">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-a3-jM-F1.css">
     <link rel="stylesheet" crossorigin href="/project-code-masters/assets/quote-miGtTn25.css">
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/index-DZ-sLGL6.css">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/index-BYpY-Hrw.css">
   </head>
   <body>
 <header class="header">
@@ -113,7 +113,6 @@
     </li>
   </ul>
 </div>
-
     <main>
 <section class="hero container">
   <div class="hero__container">
@@ -178,6 +177,56 @@
   </div>
 </section>
       <div class="container">
+        <div id="filters-block" class="container filters-block" data-state="categories">
+  <div class="filters-block-header-wrapper">
+    <h2 class="filters-block-header">
+      Exercises<span> /</span>
+    </h2>
+    <h3 class="filters-block-subheader">Waist</h3>
+  </div>
+  <form class="filters-block-form">
+    <div class="filters-block-search-input-wrapper">
+      <input class="filters-block-search-input" type="text" name="search" placeholder="Search" />
+      <button class="filters-block-search-input-button">
+        <svg class="filters-block-search-input-icon" width="18" height="18">
+          <use href="../img/icons.svg#icon-search" />
+        </svg>
+      </button>
+    </div>
+    <ul class="filters-block-list">
+      <li>
+        <button
+          class="filters-block-list-button current"
+          type="button"
+          data-filter="Muscles"
+        >
+          <span>Muscles</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="filters-block-list-button"
+          type="button"
+          data-filter="Body parts"
+        >
+          <span>Body parts</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="filters-block-list-button"
+          type="button"
+          data-filter="Equipment"
+        >
+          <span>Equipment</span>
+        </button>
+      </li>
+    </ul>
+    <input class="filters-block-filter-input" type="hidden" name="filter" value="Muscles" />
+    <input class="filters-block-category-input" type="hidden" name="category" value="" />
+  </form>
+</div>
+
         <h2 class="section-title">Exercises</h2>
         <div class="page-layout">
           <div class="page-layout__quote">
@@ -242,7 +291,7 @@
 
           </div>
           <div class="page-layout__main">
-            <section class="categories">
+            <section class="categories container">
   <ul class="categories-list js-categories-list"></ul>
 </section>
 
@@ -261,7 +310,6 @@
         </div>
       </div>
     </main>
-
 <footer class="footer">
   <div class="container footer__container">
     <div class="footer__brand">
@@ -439,6 +487,5 @@
     <use href="/project-code-masters/assets/sprite-CP9Mosze.svg#arrowUp" />
   </svg>
 </button>
-
   </body>
 </html>
