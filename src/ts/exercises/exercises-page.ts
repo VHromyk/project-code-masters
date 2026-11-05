@@ -2,6 +2,7 @@ import { fetchExercises } from './api-exercises';
 import type { Exercise, ExerciseOpenDetail, ExercisesParams } from '../types/exercise';
 import { createExerciseCards } from './exercises-cards';
 import { renderPagination } from './pagination';
+import { cardLimit } from '../utils/card-limit';
 
 const EMPTY_TEXT =
   'Unfortunately, no results were found. You may want to consider other search query parameters to find the exercise you are looking for. Try again.';
@@ -18,7 +19,7 @@ const loaded = new Map<string, Exercise>();
 export const getLoadedExercise = (id: string): Exercise | undefined => loaded.get(id);
 
 export const exercisesLimit = (): number =>
-  window.matchMedia('(max-width: 767px)').matches ? 8 : 10;
+  cardLimit({ mobileLimit: 8, desktopLimit: 10 });
 
 function setLoading(on: boolean): void {
   if (loader) loader.hidden = !on;

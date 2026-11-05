@@ -1,7 +1,6 @@
 import { getCategories } from './category-api';
 import { categoriesListTpl } from './templates/category-card';
-
-type Filter = 'Muscles' | 'Body parts' | 'Equipment';
+import { cardLimit } from './utils/card-limit';
 
 const section = document.querySelector<HTMLElement>('.categories');
 
@@ -14,51 +13,89 @@ const status =
 const pagination =
   section?.querySelector<HTMLElement>('.categories-pagination');
 
-const filters =
-  section?.querySelectorAll<HTMLButtonElement>('.categories-filter');
-
 const content =
   section?.querySelector<HTMLElement>('.categories-content');
-
-const home =
-  section?.querySelector<HTMLButtonElement>('.categories-home');
-
-const breadcrumb =
-  section?.querySelector<HTMLElement>('.categories-breadcrumb');
-
-const searchForm =
-  section?.querySelector<HTMLFormElement>('.categories-search');
-
-const searchInput =
-  section?.querySelector<HTMLInputElement>('.categories-search-input');
 
 const exercisesSection =
   document.querySelector<HTMLElement>('#exercises');
 
-const mobile = window.matchMedia('(max-width: 767px)');
+const filtersBlock =
+  document.querySelector<HTMLElement>('.filters-block');
 
-let filter: Filter = 'Muscles';
-let page = 1;
+const filterInput =
+  document.querySelector<HTMLInputElement>(
+    '.filters-block-filter-input'
+  );
 
-// Допомагає ігнорувати відповіді від попередніх запитів.
+const categoryInput =
+  document.querySelector<HTMLInputElement>(
+    '.filters-block-category-input'
+  );
+
+const searchInput =
+  document.querySelector<HTMLInputElement>(
+    '.filters-block-search-input'
+  );
+
+const subheader =
+  document.querySelector<HTMLElement>('.filters-block-subheader');
+
+let currentFilter = 'Muscles';
+let currentPage = 1;
 let requestId = 0;
 
-async function renderCategories(): Promise<void> {
+export const categoriesLimit = (): number =>
+  cardLimit({
+    mobileLimit: 9,
+    desktopLimit: 12,
+  });
+
+export async function renderCategories(
+  filter: string = currentFilter,
+  page: number = currentPage,
+  limit: number = categoriesLimit()
+): Promise<void> {
   if (!list || !status || !pagination) return;
 
-  // Повертаємо відображення категорій.
-  if (exercisesSection) exercisesSection.hidden = true;
-  if (content) content.hidden = false;
-  if (breadcrumb) breadcrumb.hidden = true;
-  if (searchForm) searchForm.hidden = true;
-  if (searchInput) searchInput.value = '';
-
-  list.style.removeProperty('display');
+  currentFilter = filter;
+  currentPage = page;
 
   const currentRequest = ++requestId;
-  const limit = mobile.matches ? 9 : 12;
 
-  list.style.minHeight = `${list.getBoundingClientRect().height}px`;
+  // Повертаємо панель у режим категорій.
+  if (filtersBlock) {
+    filtersBlock.dataset.state = 'categories';
+  }
+
+  if (filterInput) filterInput.value = filter;
+  if (categoryInput) categoryInput.value = '';
+  if (searchInput) searchInput.value = '';
+  if (subheader) subheader.textContent = '';
+
+  if (exercisesSection) exercisesSection.hidden = true;
+
+  if (section) section.hidden = false;
+  if (content) content.hidden = false;
+
+  list.hidden = false;
+  list.style.removeProperty('display');
+
+  // Синхронізуємо активну кнопку нової панелі.
+  document
+    .querySelectorAll<HTMLButtonElement>(
+      '.filters-block-list-button'
+    )
+    .forEach(button => {
+      const active = button.dataset.filter === filter;
+
+      button.classList.toggle('current', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+  // Зберігаємо висоту тільки на час завантаження.
+  list.style.minHeight =
+    `${list.getBoundingClientRect().height}px`;
+
   list.setAttribute('aria-busy', 'true');
 
   pagination.replaceChildren();
@@ -74,7 +111,6 @@ async function renderCategories(): Promise<void> {
       limit
     );
 
-    // Користувач міг уже вибрати інший фільтр.
     if (currentRequest !== requestId) return;
 
     if (results.length === 0) {
@@ -83,25 +119,32 @@ async function renderCategories(): Promise<void> {
 
       status.textContent =
         'No categories found. Please try another filter.';
+      status.hidden = false;
+
       return;
     }
 
     list.innerHTML = categoriesListTpl(results);
     list.style.removeProperty('min-height');
+
     status.hidden = true;
 
-    list.animate(
-      [
-        { opacity: 0.35, transform: 'translateY(6px)' },
-        { opacity: 1, transform: 'translateY(0)' },
-      ],
-      {
-        duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-          ? 0
-          : 220,
-        easing: 'ease-out',
-      }
-    );
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (!reducedMotion) {
+      list.animate(
+        [
+          { opacity: 0.35, transform: 'translateY(6px)' },
+          { opacity: 1, transform: 'translateY(0)' },
+        ],
+        {
+          duration: 220,
+          easing: 'ease-out',
+        }
+      );
+    }
 
     if (totalPages > 1) {
       const fragment = document.createDocumentFragment();
@@ -153,28 +196,7 @@ async function renderCategories(): Promise<void> {
   }
 }
 
-// Перемикання фільтрів.
-filters?.forEach(button => {
-  button.addEventListener('click', () => {
-    const nextFilter = button.dataset.filter as Filter;
-
-    if (nextFilter === filter && !content?.hidden) return;
-
-    filter = nextFilter;
-    page = 1;
-
-    filters.forEach(item => {
-      const active = item === button;
-
-      item.classList.toggle('is-active', active);
-      item.setAttribute('aria-pressed', String(active));
-    });
-
-    void renderCategories();
-  });
-});
-
-// Перемикання сторінок.
+// Серверна пагінація категорій.
 pagination?.addEventListener('click', event => {
   if (!(event.target instanceof Element)) return;
 
@@ -183,25 +205,28 @@ pagination?.addEventListener('click', event => {
 
   if (!button || button.hasAttribute('aria-current')) return;
 
-  page = Number(button.dataset.page);
-
-  void renderCategories();
+  void renderCategories(
+    currentFilter,
+    Number(button.dataset.page),
+    categoriesLimit()
+  );
 });
 
-// Якщо змінилася кількість карток на сторінці,
-// завантажуємо першу сторінку з новим limit.
-mobile.addEventListener('change', () => {
-  list?.style.removeProperty('min-height');
-  page = 1;
+// Зміна кількості карток при переході між mobile і tablet.
+window.matchMedia('(max-width: 767px)')
+  .addEventListener('change', () => {
+    // Не повертаємо користувача до категорій,
+    // якщо він зараз переглядає вправи.
+    if (filtersBlock?.dataset.state === 'exercises') return;
 
-  void renderCategories();
-});
+    list?.style.removeProperty('min-height');
 
-home?.addEventListener('click', () => {
-  if (content?.hidden) {
-    void renderCategories();
-  }
-});
+    void renderCategories(
+      currentFilter,
+      1,
+      categoriesLimit()
+    );
+  });
 
-// Початкове завантаження Muscles.
-void renderCategories();
+// Початковий фільтр — Muscles.
+void renderCategories('Muscles', 1, categoriesLimit());

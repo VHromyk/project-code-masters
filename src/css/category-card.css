@@ -97,43 +97,8 @@
   color: rgba(244, 244, 244, 0.4);
 }
 
-/* Пагінація */
-
-.categories-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 32px;
-  padding-bottom: 32px;
-}
-
-.categories-page {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24px;
-  height: 24px;
-  padding: 2px;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  background: transparent;
-  color: rgba(36, 36, 36, 0.4);
-  font: inherit;
-  font-size: 14px;
-  line-height: 1;
-}
-
-.categories-page[aria-current="page"] {
-  color: #242424;
-  border-color: #242424;
-}
-
-/* Повідомлення та повернення */
-
-.categories-status {
-  padding: 32px 0;
+.categories-error {
+  grid-column: 1 / -1;
   text-align: center;
 }
 
@@ -169,6 +134,41 @@
 .categories .category-card-btn:focus-visible {
   outline-color: #f4f4f4;
   outline-offset: -6px;
+}
+
+/* Пагінація категорій */
+
+.categories-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+  padding-bottom: 32px;
+}
+
+.categories-page {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px;
+
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(36, 36, 36, 0.4);
+
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.categories-page[aria-current="page"] {
+  border-color: #242424;
+  color: #242424;
 }
 
 /* Планшет */

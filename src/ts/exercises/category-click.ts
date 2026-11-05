@@ -1,5 +1,14 @@
+import {
+  changeFiltersState,
+  updateCategoryName,
+} from '../filters/states';
+
 import type { FilterName } from '../types/exercise';
-import { exercisesLimit, loadExercises } from './exercises-page';
+
+import {
+  exercisesLimit,
+  loadExercises,
+} from './exercises-page';
 
 const categoriesList =
   document.querySelector<HTMLElement>('.js-categories-list');
@@ -10,47 +19,15 @@ const categoriesContent =
 const exercisesSection =
   document.querySelector<HTMLElement>('#exercises');
 
-const breadcrumb =
-  document.querySelector<HTMLElement>('.categories-breadcrumb');
-
-const selectedName =
-  document.querySelector<HTMLElement>('.categories-selected');
-
-const searchForm =
-  document.querySelector<HTMLFormElement>('.categories-search');
+const filterInput =
+  document.querySelector<HTMLInputElement>(
+    '.filters-block-filter-input'
+  );
 
 const searchInput =
-  document.querySelector<HTMLInputElement>('.categories-search-input');
-
-const searchButton =
-  document.querySelector<HTMLButtonElement>(
-    '.categories-search-button'
+  document.querySelector<HTMLInputElement>(
+    '.filters-block-search-input'
   );
-
-const searchIcon =
-  document.querySelector<SVGElement>('.search-icon');
-
-const clearIcon =
-  document.querySelector<SVGElement>('.search-clear-icon');
-
-let searchTimer: ReturnType<typeof setTimeout> | undefined;
-
-function updateSearchIcon(): void {
-  const hasText = Boolean(searchInput?.value.length);
-
-  searchIcon?.toggleAttribute('hidden', hasText);
-  clearIcon?.toggleAttribute('hidden', !hasText);
-
-  searchButton?.setAttribute(
-    'aria-label',
-    hasText ? 'Clear search' : 'Search'
-  );
-}
-
-let selectedCategory: {
-  filter: FilterName;
-  name: string;
-} | null = null;
 
 function isFilter(value: string): value is FilterName {
   return (
@@ -71,18 +48,34 @@ categoriesList?.addEventListener('click', event => {
 
   if (!filter || !name || !isFilter(filter)) return;
 
-  selectedCategory = { filter, name };
-
+  // Приховуємо категорії разом із пагінацією.
   if (categoriesContent) categoriesContent.hidden = true;
+
+  // Показуємо список вправ.
   if (exercisesSection) exercisesSection.hidden = false;
 
-  if (selectedName) selectedName.textContent = name;
-  if (breadcrumb) breadcrumb.hidden = false;
+  // Перемикаємо нову панель у режим вправ
+  // і показуємо назву вибраної категорії.
+  changeFiltersState();
+  updateCategoryName(name);
 
-  if (searchForm) searchForm.hidden = false;
+  // Передаємо фільтр у форму пошуку.
+  if (filterInput) filterInput.value = filter;
+
+  // Очищаємо попередній пошуковий запит.
   if (searchInput) searchInput.value = '';
-  clearTimeout(searchTimer);
-  updateSearchIcon();
+
+  document
+    .querySelector('.filters-search-icon')
+    ?.removeAttribute('hidden');
+
+  document
+    .querySelector('.filters-clear-icon')
+    ?.setAttribute('hidden', '');
+
+  document
+    .querySelector('.filters-block-search-input-button')
+    ?.setAttribute('aria-label', 'Search');
 
   void loadExercises({
     filter,
@@ -91,53 +84,3 @@ categoriesList?.addEventListener('click', event => {
     limit: exercisesLimit(),
   });
 });
-
-function runSearch(): void {
-  clearTimeout(searchTimer);
-
-  if (
-    !selectedCategory ||
-    !exercisesSection ||
-    exercisesSection.hidden
-  ) {
-    return;
-  }
-
-  void loadExercises({
-    filter: selectedCategory.filter,
-    category: selectedCategory.name,
-    keyword: searchInput?.value.trim() || undefined,
-    page: 1,
-    limit: exercisesLimit(),
-  });
-}
-
-// Шукаємо через 300 мс після останнього введеного символу.
-searchInput?.addEventListener('input', () => {
-  updateSearchIcon();
-
-  clearTimeout(searchTimer);
-
-  searchTimer = setTimeout(runSearch, 300);
-});
-
-// Enter запускає пошук одразу.
-searchForm?.addEventListener('submit', event => {
-  event.preventDefault();
-  runSearch();
-});
-
-// Якщо є текст — кнопка очищає поле та повертає всі вправи.
-searchButton?.addEventListener('click', () => {
-  if (!searchInput) return;
-
-  if (searchInput.value.length > 0) {
-    searchInput.value = '';
-  }
-
-  updateSearchIcon();
-  runSearch();
-  searchInput.focus();
-});
-
-updateSearchIcon();
