@@ -1,4 +1,4 @@
-import{h as X,A as z}from"./assets/popups-LeS25x2A.js";import{c as Z,r as ee}from"./assets/scroll-up-CB1u6njQ.js";import"./assets/vendor-DzSg3hP9.js";async function te(e,t=1,r=12){const{data:s}=await X.get(z.filters,{params:{filter:e,page:t,limit:r}});return s}function k(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}const re=e=>`
+import{h as X,A as z}from"./assets/popups-KGkCyTPO.js";import{c as Z,r as ee}from"./assets/scroll-up-3Of5CWBG.js";import"./assets/vendor-DzSg3hP9.js";async function te(e,t=1,r=12){const{data:s}=await X.get(z.filters,{params:{filter:e,page:t,limit:r}});return s}function k(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}const re=e=>`
   <li class="category-card"
       style="background-image: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)), url('${encodeURI(e.imgURL)}')">
     <button class="category-card-btn" type="button"
