@@ -1,5 +1,15 @@
 const STORAGE_KEY = 'favorites';
 
+export const FAVORITES_CHANGED = 'favorites:changed';
+
+function writeFavorites(favorites: string[]): void {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+}
+
+function notifyFavoritesChanged(): void {
+  document.dispatchEvent(new CustomEvent(FAVORITES_CHANGED));
+}
+
 export function getFavorites(): string[] {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
@@ -23,7 +33,16 @@ export function toggleFavorite(id: string): boolean {
     favorites.push(id);
   }
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+  writeFavorites(favorites);
+  notifyFavoritesChanged();
 
   return !isAdded;
+}
+
+/** Remove invalid ids without emitting an event (caller continues its own render). */
+export function pruneFavorites(idsToRemove: string[]): void {
+  if (!idsToRemove.length) return;
+
+  const remove = new Set(idsToRemove);
+  writeFavorites(getFavorites().filter(id => !remove.has(id)));
 }

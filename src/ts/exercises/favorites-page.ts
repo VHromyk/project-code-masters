@@ -1,10 +1,13 @@
 import { getExerciseById } from '../popup/exercise-api';
 import type { Exercise } from '../types/exercise';
-import { getFavorites, toggleFavorite } from '../add-to-favorites/favorites-storage';
+import {
+  FAVORITES_CHANGED,
+  getFavorites,
+  pruneFavorites,
+  toggleFavorite,
+} from '../add-to-favorites/favorites-storage';
 import { createExerciseCards } from '../exercises/exercises-cards';
 import { renderPagination } from '../exercises/pagination';
-
-const FAVORITES_CHANGED = 'favorites:changed'; 
 
 const EMPTY_TEXT =
   "It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.";
@@ -12,7 +15,8 @@ const EMPTY_TEXT =
 const desktop = window.matchMedia('(min-width: 1440px)');
 const mobile = window.matchMedia('(max-width: 767px)');
 
-const pageSize = (): number => (desktop.matches ? Number.MAX_SAFE_INTEGER : mobile.matches ? 8 : 10);
+const pageSize = (): number =>
+  desktop.matches ? Number.MAX_SAFE_INTEGER : mobile.matches ? 8 : 10;
 
 const list = document.querySelector<HTMLUListElement>('#favorites-list');
 
@@ -31,7 +35,7 @@ if (!list) {
   empty.after(pagination);
 
   const cache = new Map<string, Exercise>();
-  let renderId = 0; 
+  let renderId = 0;
   let page = 1;
 
   async function render(): Promise<void> {
@@ -39,25 +43,48 @@ if (!list) {
     const ids = getFavorites().filter((id): id is string => typeof id === 'string');
 
     const size = pageSize();
-    const totalPages = Math.max(1, Math.ceil(ids.length / size));
+    const totalPages = Math.max(1, Math.ceil(ids.length / size) || 1);
     page = Math.min(page, totalPages);
     const pageIds = ids.slice((page - 1) * size, page * size);
 
     const missing = pageIds.filter(id => !cache.has(id));
-    const loaded = await Promise.allSettled(missing.map(id => getExerciseById(id)));
+    const loaded = await Promise.allSettled(
+      missing.map(id => getExerciseById(id))
+    );
     if (currentRender !== renderId) return;
-    loaded.forEach(result => {
-      if (result.status === 'fulfilled') cache.set(result.value._id, result.value);
+
+    const failed: string[] = [];
+    loaded.forEach((result, index) => {
+      if (result.status === 'fulfilled') {
+        cache.set(result.value._id, result.value);
+      } else {
+        failed.push(missing[index]);
+      }
     });
 
-    const items = pageIds.flatMap(id => cache.get(id) ?? []);
+    if (failed.length) {
+      pruneFavorites(failed);
+      failed.forEach(id => cache.delete(id));
+    }
+
+    const validIds = getFavorites().filter(
+      (id): id is string => typeof id === 'string'
+    );
+    const validTotalPages = Math.max(1, Math.ceil(validIds.length / size) || 1);
+    page = Math.min(page, validTotalPages);
+    const validPageIds = validIds.slice((page - 1) * size, page * size);
+
+    const items = validPageIds.flatMap(id => cache.get(id) ?? []);
     list!.replaceChildren(...createExerciseCards(items, 'favorites'));
     list!.hidden = items.length === 0;
-    empty.hidden = ids.length > 0;
+    empty.hidden = validIds.length > 0;
 
-   renderPagination(pagination, { page, totalPages }); 
+    renderPagination(pagination, { page, totalPages: validTotalPages });
 
-    list!.classList.toggle('has-scroll', list!.scrollHeight > list!.clientHeight);
+    list!.classList.toggle(
+      'has-scroll',
+      list!.scrollHeight > list!.clientHeight
+    );
   }
 
   const refresh = (): void => void render();
@@ -68,18 +95,15 @@ if (!list) {
     const id = target.closest<HTMLElement>('.exercise-card')?.dataset.id;
     if (!id) return;
     toggleFavorite(id);
-    refresh();
   });
 
   pagination.addEventListener('click', event => {
-    const next = Number((event.target as Element).closest<HTMLElement>('[data-page]')?.dataset.page);
+    const next = Number(
+      (event.target as Element).closest<HTMLElement>('[data-page]')?.dataset.page
+    );
     if (!next) return;
     page = next;
     refresh();
-  });
-
-  document.addEventListener('click', event => {
-    if ((event.target as Element).closest('[data-add-to-favorites]')) setTimeout(refresh, 0);
   });
 
   document.addEventListener(FAVORITES_CHANGED, refresh);

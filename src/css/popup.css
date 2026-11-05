@@ -304,8 +304,8 @@ body.locked {
     color 250ms ease;
 }
 
-.popup-button.is-favorite svg {
-  fill: currentColor;
+.popup-button.popup-button--remove svg {
+  fill: none;
 }
 
 .popup-buttons .popup-button {
