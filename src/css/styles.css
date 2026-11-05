@@ -124,11 +124,11 @@ img {
   padding: 0 0 80px;
   display: flex;
   flex-direction: column-reverse;
-  gap: 80px;
 }
 
 .page-layout--favorites {
   flex-direction: column;
+    gap: 20px;
 }
 
 @media (min-width: 768px) {
