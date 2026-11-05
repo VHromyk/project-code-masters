@@ -14,10 +14,10 @@
     <script type="module" crossorigin src="/project-code-masters/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-code-masters/assets/vendor-DzSg3hP9.js">
     <link rel="modulepreload" crossorigin href="/project-code-masters/assets/popups-BT4pBLVQ.js">
-    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/scroll-up-B_wRWAwN.js">
+    <link rel="modulepreload" crossorigin href="/project-code-masters/assets/scroll-up-BkrKzeuA.js">
     <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-BLFkDFTZ.css">
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/scroll-up-D6e0WIee.css">
-    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/index-DDpTHTTR.css">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/scroll-up-BfwE34L0.css">
+    <link rel="stylesheet" crossorigin href="/project-code-masters/assets/index-BsBLLrgI.css">
   </head>
   <body>
 <header class="header">
@@ -180,44 +180,42 @@
         <div id="filters-block" class="filters-block" data-state="categories">
   <div class="filters-block-header-wrapper">
     <h2 class="filters-block-header">
-      Exercises<span> /</span>
+      <button class="filters-block-home" type="button">
+        Exercises
+      </button>
+      <span> /</span>
     </h2>
     <h3 class="filters-block-subheader">Waist</h3>
   </div>
   <form class="filters-block-form">
     <div class="filters-block-search-input-wrapper">
       <input class="filters-block-search-input" type="text" name="search" placeholder="Search" />
-      <button class="filters-block-search-input-button">
-        <svg class="filters-block-search-input-icon" width="18" height="18">
-          <use href="../img/icons.svg#icon-search" />
+      <button class="filters-block-search-input-button" type="submit" aria-label="Search">
+        <svg class="filters-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5"></circle>
+          <path d="m16 16 5 5"></path>
+        </svg>
+
+        <svg class="filters-clear-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" aria-hidden="true" hidden>
+          <path d="m6 6 12 12M18 6 6 18"></path>
         </svg>
       </button>
     </div>
     <ul class="filters-block-list">
       <li>
-        <button
-          class="filters-block-list-button current"
-          type="button"
-          data-filter="Muscles"
-        >
+        <button class="filters-block-list-button current" type="button" data-filter="Muscles">
           <span>Muscles</span>
         </button>
       </li>
       <li>
-        <button
-          class="filters-block-list-button"
-          type="button"
-          data-filter="Body parts"
-        >
+        <button class="filters-block-list-button" type="button" data-filter="Body parts">
           <span>Body parts</span>
         </button>
       </li>
       <li>
-        <button
-          class="filters-block-list-button"
-          type="button"
-          data-filter="Equipment"
-        >
+        <button class="filters-block-list-button" type="button" data-filter="Equipment">
           <span>Equipment</span>
         </button>
       </li>
@@ -226,7 +224,6 @@
     <input class="filters-block-category-input" type="hidden" name="category" value="" />
   </form>
 </div>
-
         <div class="page-layout">
           <div class="page-layout__quote">
             <section class="quote-section" id="quote-section">
@@ -251,24 +248,13 @@
   <div class="quote-section__image-wrap">
     <picture>
       <source class="quote-section__source--lg" media="(min-width: 1440px)" srcset="">
-      <img
-        class="quote-section__image"
-        srcset="/project-code-masters/assets/quote-photo@1x-Dz6iVYVu.jpg 1x, /project-code-masters/assets/quote-photo@2x-ChJcmWIG.jpg 2x"
-        src="/project-code-masters/assets/quote-photo@1x-Dz6iVYVu.jpg"
-        alt="Two women doing outdoor workout"
-        width="335"
-        height="242"
-      />
+      <img class="quote-section__image" srcset="/project-code-masters/assets/quote-photo@1x-Dz6iVYVu.jpg 1x, /project-code-masters/assets/quote-photo@2x-ChJcmWIG.jpg 2x"
+        src="/project-code-masters/assets/quote-photo@1x-Dz6iVYVu.jpg" alt="Two women doing outdoor workout" width="335" height="242" />
     </picture>
   </div>
 
   <div class="quote-section__stats">
-    <svg
-      class="quote-section__stats-icon"
-      width="32"
-      height="32"
-      aria-hidden="true"
-    >
+    <svg class="quote-section__stats-icon" width="32" height="32" aria-hidden="true">
       <use href="/project-code-masters/assets/sprite-CP9Mosze.svg#dumbbell"></use>
     </svg>
 
@@ -287,13 +273,17 @@
     </div>
   </div>
 </section>
-
           </div>
           <div class="page-layout__main">
-            <section class="categories container">
-  <ul class="categories-list js-categories-list"></ul>
-</section>
+            <section class="categories" aria-label="Exercise categories">
+  <div class="categories-content">
+    <p class="categories-status" role="status" aria-live="polite" hidden></p>
 
+    <ul class="categories-list js-categories-list" aria-label="Exercise categories" aria-busy="false"></ul>
+
+    <nav class="categories-pagination" aria-label="Category pages" hidden></nav>
+  </div>
+</section>
             <section id="exercises" hidden>
   <div class=" exercises__content">
     <div class="exercises__content">
@@ -304,7 +294,6 @@
     <nav class="pagination" aria-label="Pagination"></nav>
   </div>
 </section>
-
           </div>
         </div>
       </div>
