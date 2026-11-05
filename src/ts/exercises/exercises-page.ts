@@ -12,7 +12,7 @@ const loader = document.querySelector<HTMLElement>('.exercises__loader');
 const pagination = document.querySelector<HTMLElement>('.pagination');
 
 let lastParams: ExercisesParams | null = null;
-let requestId = 0; 
+let requestId = 0;
 
 const loaded = new Map<string, Exercise>();
 export const getLoadedExercise = (id: string): Exercise | undefined => loaded.get(id);
@@ -47,8 +47,13 @@ export async function loadExercises(params: ExercisesParams): Promise<void> {
 
     data.results.forEach(item => loaded.set(item._id, item));
     list.replaceChildren(...createExerciseCards(data.results, 'home'));
-    if (data.results.length === 0) showMessage(EMPTY_TEXT);
-    if (pagination) {
+    if (data.results.length === 0) {
+      showMessage(
+        params.keyword
+          ? 'No such exercise'
+          : EMPTY_TEXT
+      );
+    } if (pagination) {
       renderPagination(pagination, { page: Number(data.page), totalPages: data.totalPages });
     }
   } catch {
