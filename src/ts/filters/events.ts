@@ -19,10 +19,10 @@ function setCurrentFilter(filter: Filter) {
       return;
     }
     if (button.dataset.filter === filter) {
-        button.classList.add('current');
-      } else {
-        button.classList.remove('current');
-      }
+      button.classList.add('current');
+    } else {
+      button.classList.remove('current');
+    }
   });
 }
 
@@ -33,39 +33,107 @@ function setFilterInputValue(filter: Filter) {
 }
 
 async function handleFilterClick(event: Event) {
-  if (refs.filtersBlock?.dataset.state === 'exercises') {
-    return;
-  }
+  if (!(event.target instanceof Element)) return;
 
-  const { target } = event;
-  if (target instanceof HTMLElement === false || target?.nodeName !== 'SPAN') {
-    return;
-  }
+  const button = event.target.closest<HTMLButtonElement>(
+    '.filters-block-list-button'
+  );
 
-  const button = target.parentElement;
-  if (!button) {
-    console.error('Button not found');
+  if (!button) return;
+
+  const filter = button.dataset.filter;
+
+  if (
+    filter !== Filter.Muscles &&
+    filter !== Filter.BodyParts &&
+    filter !== Filter.Equipment
+  ) {
     return;
   }
-  const filter = button.dataset.filter as Filter;
 
   setCurrentFilter(filter);
   setFilterInputValue(filter);
 
   const limit = categoriesLimit();
+
   await renderCategories(filter, 1, limit);
+}
+
+let searchTimer: ReturnType<typeof setTimeout> | undefined;
+
+async function searchExercises(): Promise<void> {
+  clearTimeout(searchTimer);
+
+  if (refs.filtersBlock?.dataset.state !== 'exercises') return;
+  if (!refs.form) return;
+
+  const categoryInput = refs.form.elements.namedItem(
+    'category'
+  ) as HTMLInputElement | null;
+
+  const filterInput = refs.form.elements.namedItem(
+    'filter'
+  ) as HTMLInputElement | null;
+
+  const searchInput = refs.form.elements.namedItem(
+    'search'
+  ) as HTMLInputElement | null;
+
+  const category = categoryInput?.value.trim();
+  const filter = filterInput?.value;
+  const keyword = searchInput?.value.trim();
+
+  if (!category) return;
+
+  if (
+    filter !== Filter.Muscles &&
+    filter !== Filter.BodyParts &&
+    filter !== Filter.Equipment
+  ) {
+    return;
+  }
+
+  await loadExercises({
+    category,
+    filter,
+    keyword: keyword || undefined,
+    page: 1,
+    limit: exercisesLimit(),
+  });
 }
 
 async function handleFormSubmit(event: Event) {
   event.preventDefault();
 
-  const form = event.target as HTMLFormElement;
-  const category = (form.elements.namedItem('category') as HTMLInputElement)?.value;
-  const filter = (form.elements.namedItem('filter') as HTMLInputElement)?.value as Filter;
-  const keyword = (form.elements.namedItem('search') as HTMLInputElement)?.value;
-  const limit = exercisesLimit();
-  await loadExercises({ category, filter, keyword, page: 1, limit });
+  await searchExercises();
 }
+
+const homeButton =
+  document.querySelector<HTMLButtonElement>('.filters-block-home');
+
+homeButton?.addEventListener('click', () => {
+  setCurrentFilter(Filter.Muscles);
+  setFilterInputValue(Filter.Muscles);
+
+  void renderCategories(
+    Filter.Muscles,
+    1,
+    categoriesLimit()
+  );
+});
+
+const searchField =
+  document.querySelector<HTMLInputElement>(
+    '.filters-block-search-input'
+  );
+
+searchField?.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+
+  searchTimer = setTimeout(() => {
+    void searchExercises();
+  }, 300);
+});
 
 refs.form?.addEventListener('submit', handleFormSubmit);
 refs.filtersBlockList?.addEventListener('click', handleFilterClick);

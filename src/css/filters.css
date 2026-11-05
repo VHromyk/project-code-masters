@@ -183,11 +183,41 @@
 }
 
 .filters-block[data-state="categories"] .filters-block-subheader,
-.filters-block[data-state="categories"] .filters-block-search-input-wrapper, 
+.filters-block[data-state="categories"] .filters-block-search-input-wrapper,
 .filters-block[data-state="categories"] .filters-block-header>span {
   display: none;
 }
 
 .filters-block[data-state="exercises"] .filters-block-list-button {
   cursor: default;
+}
+
+.filters-block-home {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.filters-block-home:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.filters-block-search-input-button [hidden] {
+  display: none;
+}
+
+.filters-block-list-button {
+  cursor: pointer;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.filters-block[data-state="exercises"] .filters-block-list,
+.filters-block[data-state="exercises"] .filters-block-list-button {
+  pointer-events: auto;
 }
