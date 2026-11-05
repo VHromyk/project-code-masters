@@ -1,5 +1,6 @@
 import { getCategories } from './category-api';
 import { categoriesListTpl } from './templates/category-card';
+import { cardLimit } from './utils/card-limit';
 
 const list = document.querySelector<HTMLUListElement>('.js-categories-list');
 
@@ -7,7 +8,10 @@ function showError(list: HTMLUListElement, message: string): void {
   list.innerHTML = `<li class="categories-error">${message}</li>`;
 }
 
-async function renderCategories(
+export const categoriesLimit = (): number =>
+  cardLimit({ mobileLimit: 9, desktopLimit: 12 });
+
+export async function renderCategories(
   filter: string,
   page: number,
   limit: number
@@ -29,10 +33,6 @@ async function renderCategories(
   }
 }
 
-const isMobile = false;
-let limit = 12;
-if (isMobile) {
-  limit = 9;
-}
+const limit = categoriesLimit();
 
 renderCategories('Muscles', 1, limit);
