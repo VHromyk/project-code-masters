@@ -58,6 +58,10 @@ categoriesList?.addEventListener('click', event => {
   // і показуємо назву вибраної категорії.
   changeFiltersState();
   updateCategoryName(name);
+  const section = document.querySelector<HTMLElement>('.categories')
+  if (section) { 
+    section.hidden = true
+  }
 
   // Передаємо фільтр у форму пошуку.
   if (filterInput) filterInput.value = filter;

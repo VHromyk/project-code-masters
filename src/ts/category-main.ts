@@ -65,11 +65,6 @@ export async function renderCategories(
 
   const currentRequest = ++requestId;
 
-  // Повертаємо панель у режим категорій.
-  if (filtersBlock) {
-    filtersBlock.dataset.state = 'categories';
-  }
-
   if (filterInput) filterInput.value = filter;
   if (categoryInput) categoryInput.value = '';
   if (searchInput) searchInput.value = '';
