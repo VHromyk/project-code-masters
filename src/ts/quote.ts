@@ -19,15 +19,19 @@ function getTodayDate(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-async function getQuote(): Promise<QuoteResponse> {
+function getCachedQuote(): QuoteResponse | null {
   const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return null;
 
-  if (raw) {
-    const stored: StoredQuote = JSON.parse(raw);
-    if (stored.date === getTodayDate()) {
-      return { author: stored.author, quote: stored.quote };
-    }
-  }
+  const stored: StoredQuote = JSON.parse(raw);
+  if (stored.date !== getTodayDate()) return null;
+
+  return { author: stored.author, quote: stored.quote };
+}
+
+async function getQuote(): Promise<QuoteResponse> {
+  const cached = getCachedQuote();
+  if (cached) return cached;
 
   const { data } = await http.get<QuoteResponse>(API_URL.quote);
 
@@ -88,10 +92,17 @@ function renderQuoteData({ author, quote }: QuoteResponse): void {
 }
 
 async function renderQuote(): Promise<void> {
+  const loader = document.querySelector<HTMLElement>('.quote .loader');
+  const needsFetch = !getCachedQuote();
+
+  if (needsFetch && loader) loader.hidden = false;
+
   try {
     renderQuoteData(await getQuote());
   } catch {
     renderQuoteData(DEFAULT_QUOTE);
+  } finally {
+    if (loader) loader.hidden = true;
   }
 }
 

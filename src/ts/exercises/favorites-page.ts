@@ -19,15 +19,17 @@ const pageSize = (): number =>
   desktop.matches ? Number.MAX_SAFE_INTEGER : mobile.matches ? 8 : 10;
 
 const list = document.querySelector<HTMLUListElement>('#favorites-list');
+const content = document.querySelector<HTMLElement>('.favorites__content');
+const loader = content?.querySelector<HTMLElement>(':scope > .loader');
 
-if (!list) {
+if (!list || !content) {
   console.warn('[favorites] don\'t have <ul id="favorites-list"> у favorites.html');
 } else {
   const empty = document.createElement('p');
   empty.className = 'favorites__empty';
   empty.textContent = EMPTY_TEXT;
   empty.hidden = true;
-  list.after(empty);
+  content.after(empty);
 
   const pagination = document.createElement('nav');
   pagination.className = 'pagination';
@@ -48,9 +50,16 @@ if (!list) {
     const pageIds = ids.slice((page - 1) * size, page * size);
 
     const missing = pageIds.filter(id => !cache.has(id));
-    const loaded = await Promise.allSettled(
-      missing.map(id => getExerciseById(id))
-    );
+    if (missing.length && loader) loader.hidden = false;
+
+    let loaded: PromiseSettledResult<Exercise>[] = [];
+    try {
+      loaded = await Promise.allSettled(
+        missing.map(id => getExerciseById(id))
+      );
+    } finally {
+      if (currentRender === renderId && loader) loader.hidden = true;
+    }
     if (currentRender !== renderId) return;
 
     const failed: string[] = [];

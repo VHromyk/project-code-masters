@@ -9,7 +9,7 @@ const EMPTY_TEXT =
 
 const list = document.querySelector<HTMLUListElement>('.exercises__list');
 const message = document.querySelector<HTMLParagraphElement>('.exercises__message');
-const loader = document.querySelector<HTMLElement>('.exercises__loader');
+const loader = document.querySelector<HTMLElement>('.exercises__content > .loader');
 const pagination = document.querySelector<HTMLElement>('.pagination');
 
 let lastParams: ExercisesParams | null = null;
