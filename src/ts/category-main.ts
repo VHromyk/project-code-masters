@@ -16,6 +16,9 @@ const pagination =
 const content =
   section?.querySelector<HTMLElement>('.categories-content');
 
+const loader =
+  section?.querySelector<HTMLElement>('.categories-content > .loader');
+
 const exercisesSection =
   document.querySelector<HTMLElement>('#exercises');
 
@@ -97,12 +100,11 @@ export async function renderCategories(
     `${list.getBoundingClientRect().height}px`;
 
   list.setAttribute('aria-busy', 'true');
+  if (loader) loader.hidden = false;
 
   pagination.replaceChildren();
   pagination.hidden = true;
-
-  status.textContent = 'Loading categories…';
-  status.hidden = list.children.length > 0;
+  status.hidden = true;
 
   try {
     const { results, totalPages } = await getCategories(
@@ -192,6 +194,7 @@ export async function renderCategories(
   } finally {
     if (currentRequest === requestId) {
       list.setAttribute('aria-busy', 'false');
+      if (loader) loader.hidden = true;
     }
   }
 }

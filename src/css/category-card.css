@@ -3,6 +3,11 @@
   padding-bottom: 40px;
 }
 
+.categories-content {
+  position: relative;
+  min-height: 120px;
+}
+
 .categories-header {
   display: flex;
   flex-direction: column;
@@ -236,7 +241,6 @@
   }
 
   .categories-list[aria-busy="true"] {
-    opacity: 0.45;
     pointer-events: none;
   }
 

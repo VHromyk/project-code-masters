@@ -157,30 +157,9 @@
   color: var(--color-text);
 }
 
-.exercises__message[hidden],
-.exercises__loader[hidden] {
+.exercises__message[hidden] {
   display: none;
 }
-
-.exercises__loader {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  width: 36px;
-  height: 36px;
-  margin-left: -18px;
-  border: 3px solid var(--color-border);
-  border-top-color: var(--color-text);
-  border-radius: 50%;
-  animation: exercises-spin 0.8s linear infinite;
-}
-
-@keyframes exercises-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 /* ── Tablet ── */
 @media (min-width: 768px) {
