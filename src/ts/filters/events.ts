@@ -1,17 +1,25 @@
 import { Filter } from '../types/filter';
-import { renderCategories } from '../category-main';
+import { renderCategories } from '../category/category-main';
 import { exercisesLimit, loadExercises } from '../exercises/exercises-page';
-import { categoriesLimit } from '../category-main';
+import { categoriesLimit } from '../category/category-main';
 
 const refs = {
   filtersBlock: document.querySelector<HTMLElement>('.filters-block'),
   filtersBlockList: document.querySelector<HTMLElement>('.filters-block-list'),
-  filtersBlockButtons: document.querySelectorAll<HTMLElement>('.filters-block-list-button'),
-  filterInput: document.querySelector<HTMLInputElement>('.filters-block-filter-input'),
-  searchInput: document.querySelector<HTMLInputElement>('.filters-block-search-input'),
+  filtersBlockButtons: document.querySelectorAll<HTMLElement>(
+    '.filters-block-list-button'
+  ),
+  filterInput: document.querySelector<HTMLInputElement>(
+    '.filters-block-filter-input'
+  ),
+  searchInput: document.querySelector<HTMLInputElement>(
+    '.filters-block-search-input'
+  ),
   form: document.querySelector<HTMLFormElement>('.filters-block-form'),
-  closeButton: document.querySelector<HTMLElement>('.filters-block-search-close-button')
-}
+  closeButton: document.querySelector<HTMLElement>(
+    '.filters-block-search-close-button'
+  ),
+};
 
 function setCurrentFilter(filter: Filter) {
   const buttons = refs.filtersBlockButtons;
@@ -33,9 +41,13 @@ function setCurrentFilter(filter: Filter) {
 }
 
 async function renderExercisesByFormData(form: HTMLFormElement) {
-  const category = (form.elements.namedItem('category') as HTMLInputElement)?.value;
-  const filter = (form.elements.namedItem('filter') as HTMLInputElement)?.value as Filter;
-  const keyword = (form.elements.namedItem('search') as HTMLInputElement)?.value.trim();
+  const category = (form.elements.namedItem('category') as HTMLInputElement)
+    ?.value;
+  const filter = (form.elements.namedItem('filter') as HTMLInputElement)
+    ?.value as Filter;
+  const keyword = (
+    form.elements.namedItem('search') as HTMLInputElement
+  )?.value.trim();
   const limit = exercisesLimit();
   await loadExercises({ category, filter, keyword, page: 1, limit });
 }
@@ -74,7 +86,9 @@ async function handleFormSubmit(event: Event) {
 }
 
 async function handleCloseButtonClick() {
-  const searchInput = refs.form?.elements.namedItem('search') as HTMLInputElement;
+  const searchInput = refs.form?.elements.namedItem(
+    'search'
+  ) as HTMLInputElement;
   if (searchInput) {
     searchInput.value = '';
   }

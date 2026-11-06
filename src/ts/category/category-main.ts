@@ -1,47 +1,42 @@
 import { getCategories } from './category-api';
-import { categoriesListTpl } from './templates/category-card';
-import { cardLimit } from './utils/card-limit';
+import { categoriesListTpl } from '../templates/category-card';
+import { cardLimit } from '../utils/card-limit';
 
 const section = document.querySelector<HTMLElement>('.categories');
 
-const list =
-  section?.querySelector<HTMLUListElement>('.js-categories-list');
+const list = section?.querySelector<HTMLUListElement>('.js-categories-list');
 
-const status =
-  section?.querySelector<HTMLElement>('.categories-status');
+const status = section?.querySelector<HTMLElement>('.categories-status');
 
-const pagination =
-  section?.querySelector<HTMLElement>('.categories-pagination');
+const pagination = section?.querySelector<HTMLElement>(
+  '.categories-pagination'
+);
 
-const content =
-  section?.querySelector<HTMLElement>('.categories-content');
+const content = section?.querySelector<HTMLElement>('.categories-content');
 
-const loader =
-  section?.querySelector<HTMLElement>('.categories-content > .loader');
+const loader = section?.querySelector<HTMLElement>(
+  '.categories-content > .loader'
+);
 
-const exercisesSection =
-  document.querySelector<HTMLElement>('#exercises');
+const exercisesSection = document.querySelector<HTMLElement>('#exercises');
 
-const filtersBlock =
-  document.querySelector<HTMLElement>('.filters-block');
+const filtersBlock = document.querySelector<HTMLElement>('.filters-block');
 
-const filterInput =
-  document.querySelector<HTMLInputElement>(
-    '.filters-block-filter-input'
-  );
+const filterInput = document.querySelector<HTMLInputElement>(
+  '.filters-block-filter-input'
+);
 
-const categoryInput =
-  document.querySelector<HTMLInputElement>(
-    '.filters-block-category-input'
-  );
+const categoryInput = document.querySelector<HTMLInputElement>(
+  '.filters-block-category-input'
+);
 
-const searchInput =
-  document.querySelector<HTMLInputElement>(
-    '.filters-block-search-input'
-  );
+const searchInput = document.querySelector<HTMLInputElement>(
+  '.filters-block-search-input'
+);
 
-const subheader =
-  document.querySelector<HTMLElement>('.filters-block-subheader');
+const subheader = document.querySelector<HTMLElement>(
+  '.filters-block-subheader'
+);
 
 let currentFilter = 'Muscles';
 let currentPage = 1;
@@ -85,9 +80,7 @@ export async function renderCategories(
 
   // Синхронізуємо активну кнопку нової панелі.
   document
-    .querySelectorAll<HTMLButtonElement>(
-      '.filters-block-list-button'
-    )
+    .querySelectorAll<HTMLButtonElement>('.filters-block-list-button')
     .forEach(button => {
       const active = button.dataset.filter === filter;
 
@@ -96,8 +89,7 @@ export async function renderCategories(
     });
 
   // Зберігаємо висоту тільки на час завантаження.
-  list.style.minHeight =
-    `${list.getBoundingClientRect().height}px`;
+  list.style.minHeight = `${list.getBoundingClientRect().height}px`;
 
   list.setAttribute('aria-busy', 'true');
   if (loader) loader.hidden = false;
@@ -107,11 +99,7 @@ export async function renderCategories(
   status.hidden = true;
 
   try {
-    const { results, totalPages } = await getCategories(
-      filter,
-      page,
-      limit
-    );
+    const { results, totalPages } = await getCategories(filter, page, limit);
 
     if (currentRequest !== requestId) return;
 
@@ -119,8 +107,7 @@ export async function renderCategories(
       list.replaceChildren();
       list.style.removeProperty('min-height');
 
-      status.textContent =
-        'No categories found. Please try another filter.';
+      status.textContent = 'No categories found. Please try another filter.';
       status.hidden = false;
 
       return;
@@ -203,8 +190,7 @@ export async function renderCategories(
 pagination?.addEventListener('click', event => {
   if (!(event.target instanceof Element)) return;
 
-  const button =
-    event.target.closest<HTMLButtonElement>('button[data-page]');
+  const button = event.target.closest<HTMLButtonElement>('button[data-page]');
 
   if (!button || button.hasAttribute('aria-current')) return;
 
@@ -216,20 +202,15 @@ pagination?.addEventListener('click', event => {
 });
 
 // Зміна кількості карток при переході між mobile і tablet.
-window.matchMedia('(max-width: 767px)')
-  .addEventListener('change', () => {
-    // Не повертаємо користувача до категорій,
-    // якщо він зараз переглядає вправи.
-    if (filtersBlock?.dataset.state === 'exercises') return;
+window.matchMedia('(max-width: 767px)').addEventListener('change', () => {
+  // Не повертаємо користувача до категорій,
+  // якщо він зараз переглядає вправи.
+  if (filtersBlock?.dataset.state === 'exercises') return;
 
-    list?.style.removeProperty('min-height');
+  list?.style.removeProperty('min-height');
 
-    void renderCategories(
-      currentFilter,
-      1,
-      categoriesLimit()
-    );
-  });
+  void renderCategories(currentFilter, 1, categoriesLimit());
+});
 
 // Початковий фільтр — Muscles.
 void renderCategories('Muscles', 1, categoriesLimit());
