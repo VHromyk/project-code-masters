@@ -40,7 +40,7 @@
 }
 
 .categories-filter.is-active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -166,7 +166,7 @@
   line-height: 1;
 }
 
-.categories-page[aria-current='page'] {
+.categories-page[aria-current="page"] {
   border-color: #242424;
   color: #242424;
 }
@@ -235,7 +235,7 @@
     transition: opacity 180ms ease;
   }
 
-  .categories-list[aria-busy='true'] {
+  .categories-list[aria-busy="true"] {
     opacity: 0.45;
     pointer-events: none;
   }
@@ -249,7 +249,7 @@
   }
 
   .categories-filter::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -273,6 +273,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+
     .categories-list,
     .categories-filter,
     .categories-page,
@@ -404,6 +405,7 @@
   .categories-search-button [hidden] {
     display: none;
   }
+
 }
 
 .page-layout__main > .categories {
