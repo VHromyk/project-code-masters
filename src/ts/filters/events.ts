@@ -2,35 +2,14 @@ import { Filter } from '../types/filter';
 import { renderCategories } from '../category-main';
 import { exercisesLimit, loadExercises } from '../exercises/exercises-page';
 import { categoriesLimit } from '../category-main';
+import {
+  updateCloseButtonHiding,
+  setCurrentFilter,
+  changeFiltersStateToCategories
+} from './states';
+import { refs } from './refs';
 
-const refs = {
-  filtersBlock: document.querySelector<HTMLElement>('.filters-block'),
-  filtersBlockList: document.querySelector<HTMLElement>('.filters-block-list'),
-  filtersBlockButtons: document.querySelectorAll<HTMLElement>('.filters-block-list-button'),
-  filterInput: document.querySelector<HTMLInputElement>('.filters-block-filter-input'),
-  searchInput: document.querySelector<HTMLInputElement>('.filters-block-search-input'),
-  form: document.querySelector<HTMLFormElement>('.filters-block-form'),
-  closeButton: document.querySelector<HTMLElement>('.filters-block-search-close-button')
-}
-
-function setCurrentFilter(filter: Filter) {
-  const buttons = refs.filtersBlockButtons;
-  buttons.forEach(button => {
-    if (button instanceof HTMLElement === false) {
-      console.error('Button is not an HTMLElement');
-      return;
-    }
-    if (button.dataset.filter === filter) {
-      button.classList.add('current');
-    } else {
-      button.classList.remove('current');
-    }
-  });
-
-  if (refs.filterInput) {
-    refs.filterInput.value = filter;
-  }
-}
+let currentFilter = Filter.Muscles
 
 async function renderExercisesByFormData(form: HTMLFormElement) {
   const category = (form.elements.namedItem('category') as HTMLInputElement)?.value;
@@ -40,30 +19,22 @@ async function renderExercisesByFormData(form: HTMLFormElement) {
   await loadExercises({ category, filter, keyword, page: 1, limit });
 }
 
-function updateCloseButtonHiding() {
-  if (refs.searchInput?.value) {
-    refs.closeButton?.classList.remove('hide');
-  } else {
-    refs.closeButton?.classList.add('hide');
-  }
+async function renderCategoriesByFilter() { 
+  const limit = categoriesLimit();
+  await renderCategories(currentFilter, 1, limit);
 }
 
 async function handleFilterClick(event: Event) {
-  if (refs.filtersBlock?.dataset.state === 'exercises') {
-    return;
-  }
-
   const target = event.target as HTMLElement;
   if (target?.nodeName !== 'SPAN') {
     return;
   }
 
-  const filter = target.parentElement?.dataset.filter as Filter;
-  setCurrentFilter(filter);
+  currentFilter = target.parentElement?.dataset.filter as Filter;
+  setCurrentFilter(currentFilter);
 
-  const limit = categoriesLimit();
-
-  await renderCategories(filter, 1, limit);
+  changeFiltersStateToCategories();
+  await renderCategoriesByFilter()
 }
 
 async function handleFormSubmit(event: Event) {
@@ -87,7 +58,13 @@ function handleSearchInputValueChange() {
   updateCloseButtonHiding();
 }
 
+async function handleExercisesLinkClick() { 
+  changeFiltersStateToCategories()
+  await renderCategoriesByFilter()
+}
+
 refs.form?.addEventListener('submit', handleFormSubmit);
 refs.filtersBlockList?.addEventListener('click', handleFilterClick);
 refs.closeButton?.addEventListener('click', handleCloseButtonClick);
 refs.searchInput?.addEventListener('input', handleSearchInputValueChange);
+refs.exercisesLink?.addEventListener('click', handleExercisesLinkClick)

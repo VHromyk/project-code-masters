@@ -40,7 +40,6 @@
   font-size: 44px;
   line-height: 1.09;
   letter-spacing: -0.02em;
-  color: #242424;
 }
 
 @media (max-width: 768px) {
@@ -48,6 +47,11 @@
     font-size: 28px;
     line-height: 1.36;
   }
+}
+
+.filters-block-header-link {
+  color: #242424;
+  text-decoration: none;
 }
 
 .filters-block-subheader {
@@ -157,6 +161,7 @@
   line-height: 1.5;
   color: rgba(36, 36, 36, 0.6);
   white-space: nowrap;
+  background-color: transparent;
 
   height: 32px;
   padding: 0;
@@ -196,38 +201,4 @@
 .filters-block[data-state="categories"] .filters-block-header>span,
 .hide {
   display: none;
-}
-
-.filters-block[data-state="exercises"] .filters-block-list-button {
-  cursor: default;
-}
-
-.filters-block-home {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
-  cursor: pointer;
-}
-
-.filters-block-home:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
-}
-
-.filters-block-search-input-button [hidden] {
-  display: none;
-}
-
-.filters-block-list-button {
-  cursor: pointer;
-  pointer-events: auto;
-  background: transparent;
-}
-
-.filters-block[data-state="exercises"] .filters-block-list,
-.filters-block[data-state="exercises"] .filters-block-list-button {
-  pointer-events: auto;
 }
