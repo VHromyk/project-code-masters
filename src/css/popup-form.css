@@ -13,7 +13,11 @@ fieldset {
 }
 
 .popup-form {
-  gap: 32px;
+  gap: 20px;
+}
+
+.popup-form .popup-button {
+  width: 100%;
 }
 
 .popup-form-fieldset {
@@ -84,7 +88,7 @@ fieldset {
   gap: 4px;
   position: relative;
   max-height: 0;
-  margin-top: -32px;
+  margin-top: -20px;
   padding: 0 14px;
   overflow: hidden;
   opacity: 0;
@@ -104,4 +108,13 @@ fieldset {
   margin-top: 0;
   padding: 12px 14px;
   opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .popup-form {
+    gap: 32px;
+  }
+  .form-errors {
+    margin-top: -32px;
+  }
 }

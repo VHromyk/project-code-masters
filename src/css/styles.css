@@ -12,7 +12,7 @@
   --color-social: #242424;
   --color-border: rgba(36, 36, 36, 0.1);
   --color-gold: #eea10c;
-  --color-invalid: #b71d1d;
+  --color-invalid: #ff6b6b;
 
   /* Radius */
   --radius-xs: 12px; /* img_card */
@@ -128,7 +128,7 @@ img {
 
 .page-layout--favorites {
   flex-direction: column;
-    gap: 20px;
+  gap: 20px;
 }
 
 @media (min-width: 768px) {
