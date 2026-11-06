@@ -213,7 +213,6 @@ body.locked {
 .exercise-description {
   display: block;
   width: 100%;
-  min-height: 126px;
   font-size: 14px;
   line-height: 1.285714;
   font-weight: 400;
@@ -256,15 +255,10 @@ body.locked {
   gap: 10px 7px;
 }
 
-.popup-buttons li {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
 .popup-button {
   display: inline-flex;
   position: relative;
-  width: auto;
+  width: 100%;
   background: none;
   justify-content: center;
   align-items: center;
@@ -274,7 +268,14 @@ body.locked {
   border-radius: 30px;
   color: var(--color-bg);
   gap: 8px;
-  padding: 12px 23px;
+  padding: 11px 23px;
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
+.popup-button:hover,
+.popup-button:focus-visible {
+  opacity: 0.8;
 }
 
 .popup-button.white {
@@ -308,10 +309,6 @@ body.locked {
   fill: none;
 }
 
-.popup-buttons .popup-button {
-  width: 100%;
-}
-
 @media (min-width: 768px) {
   .popup-backdrop {
     padding: 32px;
@@ -333,6 +330,10 @@ body.locked {
     height: 28px;
   }
 
+  .exercise-description {
+    min-height: 126px;
+  }
+
   .exercise-image {
     max-width: 270px;
     height: 259px;
@@ -344,5 +345,10 @@ body.locked {
 
   .popup-buttons {
     flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .popup-buttons .popup-button {
+    width: auto;
   }
 }

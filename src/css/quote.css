@@ -30,7 +30,14 @@
 }
 
 .quote > div {
+  position: relative;
   flex: 1;
+  min-height: 72px;
+}
+
+.quote .loader {
+  top: 50%;
+  margin-top: -18px;
 }
 
 .quote__header {

@@ -1,3 +1,9 @@
+.favorites__content {
+  position: relative;
+  min-height: 120px;
+  margin-top: 20px;
+}
+
 .favorites__list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -24,6 +30,10 @@
 
 /* ── Tablet ── */
 @media (min-width: 768px) {
+  .favorites__content {
+    margin-top: 0;
+  }
+
   .favorites__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px 16px;

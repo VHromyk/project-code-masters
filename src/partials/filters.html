@@ -1,4 +1,4 @@
-<div id="filters-block" class="filters-block" data-state="categories">
+<section id="filters-block" class="filters-block" data-state="categories">
   <div class="filters-block-header-wrapper">
     <h2 class="filters-block-header">
       <button class="filters-block-home" type="button">
@@ -11,16 +11,14 @@
   <form class="filters-block-form">
     <div class="filters-block-search-input-wrapper">
       <input class="filters-block-search-input" type="text" name="search" placeholder="Search" />
-      <button class="filters-block-search-input-button" type="submit" aria-label="Search">
-        <svg class="filters-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5" aria-hidden="true">
-          <circle cx="10.5" cy="10.5" r="6.5"></circle>
-          <path d="m16 16 5 5"></path>
+      <button class="filters-block-search-close-button hide" type="button">
+        <svg class="filters-block-search-close-icon" width="18" height="18">
+          <use href="./img/sprite.svg#close" />
         </svg>
-
-        <svg class="filters-clear-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5" aria-hidden="true" hidden>
-          <path d="m6 6 12 12M18 6 6 18"></path>
+      </button>
+      <button class="filters-block-search-input-button" type="submit">
+        <svg class="filters-block-search-input-icon" width="18" height="18">
+          <use href="./img/sprite.svg#search" />
         </svg>
       </button>
     </div>
@@ -44,4 +42,4 @@
     <input class="filters-block-filter-input" type="hidden" name="filter" value="Muscles" />
     <input class="filters-block-category-input" type="hidden" name="category" value="" />
   </form>
-</div>
+</section>

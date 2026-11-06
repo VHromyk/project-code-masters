@@ -1,5 +1,5 @@
-import { addExerciseRating } from './exercise-api';
-import { getErrorMessage } from './http-client';
+import { addExerciseRating } from '../exercises/api-exercises';
+import { getErrorMessage } from '../../api/api-errors';
 import { checkForm, resetForm, showFormErrors } from './popup-form-validation';
 import { showExercise } from './exercise-popup';
 

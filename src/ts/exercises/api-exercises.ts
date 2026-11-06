@@ -1,5 +1,12 @@
-import type { Exercise, FilterName, PagedResponse, ExercisesParams } from '../types/exercise';
+import type {
+  Exercise,
+  FilterName,
+  PagedResponse,
+  ExercisesParams,
+  RatingPayload,
+} from '../types/exercise';
 import http from '../../api/http';
+import { getJson, patchJson } from '../../api/api-errors';
 import { API_URL } from '../../api/config/endpoints';
 
 const api = http;
@@ -26,4 +33,15 @@ export async function fetchExercises({
 
   const { data } = await api.get<PagedResponse<Exercise>>(API_URL.exercises, { params });
   return data;
+}
+
+export function getExerciseById(id: string): Promise<Exercise> {
+  return getJson<Exercise>(API_URL.exerciseById(id));
+}
+
+export function addExerciseRating(
+  id: string,
+  payload: RatingPayload
+): Promise<Exercise> {
+  return patchJson<Exercise>(API_URL.exerciseRating(id), payload);
 }
