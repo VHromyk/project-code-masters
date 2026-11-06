@@ -407,3 +407,7 @@
   }
 
 }
+
+.page-layout__main > .categories {
+  padding-top: 0;
+}
