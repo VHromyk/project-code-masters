@@ -1,6 +1,6 @@
 import { isFavorite, toggleFavorite } from './favorites-storage';
+import spriteUrl from '../../img/sprite.svg?url';
 
-const SPRITE_URL = new URL('../../img/sprite.svg', import.meta.url).href;
 const ADD_LABEL = 'Add to favorites';
 const REMOVE_LABEL = 'Remove from favorites';
 
@@ -18,7 +18,7 @@ function syncFavoriteButton(button: HTMLElement): void {
   const iconUse = button.querySelector('use');
   if (iconUse) {
     const symbol = favorite ? 'card-trash' : 'heart';
-    iconUse.setAttribute('href', `${SPRITE_URL}#${symbol}`);
+    iconUse.setAttribute('href', `${spriteUrl}#${symbol}`);
   }
 }
 

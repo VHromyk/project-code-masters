@@ -39,7 +39,6 @@ export function toggleFavorite(id: string): boolean {
   return !isAdded;
 }
 
-/** Remove invalid ids without emitting an event (caller continues its own render). */
 export function pruneFavorites(idsToRemove: string[]): void {
   if (!idsToRemove.length) return;
 

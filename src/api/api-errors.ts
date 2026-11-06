@@ -1,5 +1,5 @@
 import axios from 'axios';
-import http from '../../api/http';
+import http from './http';
 
 const NETWORK_ERROR_STATUS = 0;
 const NETWORK_ERROR_MESSAGE = 'Check your internet connection and try again.';

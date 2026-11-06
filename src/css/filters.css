@@ -120,7 +120,7 @@
   }
 }
 
-.filters-block-search-input-button, 
+.filters-block-search-input-button,
 .filters-block-search-close-button {
   position: absolute;
   top: 50%;
@@ -191,14 +191,14 @@
   border-radius: 2px;
 }
 
-.filters-block[data-state="categories"] .filters-block-subheader,
-.filters-block[data-state="categories"] .filters-block-search-input-wrapper, 
-.filters-block[data-state="categories"] .filters-block-header>span,
+.filters-block[data-state='categories'] .filters-block-subheader,
+.filters-block[data-state='categories'] .filters-block-search-input-wrapper,
+.filters-block[data-state='categories'] .filters-block-header > span,
 .hide {
   display: none;
 }
 
-.filters-block[data-state="exercises"] .filters-block-list-button {
+.filters-block[data-state='exercises'] .filters-block-list-button {
   cursor: default;
 }
 
@@ -227,7 +227,7 @@
   background: transparent;
 }
 
-.filters-block[data-state="exercises"] .filters-block-list,
-.filters-block[data-state="exercises"] .filters-block-list-button {
+.filters-block[data-state='exercises'] .filters-block-list,
+.filters-block[data-state='exercises'] .filters-block-list-button {
   pointer-events: auto;
 }

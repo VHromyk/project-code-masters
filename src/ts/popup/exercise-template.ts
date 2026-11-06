@@ -1,6 +1,6 @@
 import type { Exercise } from '../types/exercise';
-
-const SPRITE_URL = new URL('../../img/sprite.svg', import.meta.url).href;
+import { escapeHtml } from '../utils/escape-html';
+import spriteUrl from '../../img/sprite.svg?url';
 const MAX_RATING = 5;
 
 export function createExerciseMarkup(exercise: Exercise): string {
@@ -18,7 +18,7 @@ export function createExerciseMarkup(exercise: Exercise): string {
     description,
   } = exercise;
 
-  const title = name ? name[0].toUpperCase() + name.slice(1) : '';
+  const title = name ? escapeHtml(name[0].toUpperCase() + name.slice(1)) : '';
 
   const image = gifUrl
     ? `<img src="${gifUrl}" alt="${title}" />`
@@ -50,14 +50,14 @@ export function createExerciseMarkup(exercise: Exercise): string {
     <div class="exercise-content">
       ${head ? `<div class="exercise-content-head">${head}</div>` : ''}
       ${infoItems ? `<ul class="exercise-info">${infoItems}</ul>` : ''}
-      ${description ? `<p class="exercise-description">${description}</p>` : ''}
+      ${description ? `<p class="exercise-description">${escapeHtml(description)}</p>` : ''}
     </div>
 
     <ul class="popup-buttons">
       <li>
         <button type="button" class="popup-button white" data-add-to-favorites="${_id}">
           <span>Add to favorites</span>
-          <svg><use href="${SPRITE_URL}#heart"></use></svg>
+          <svg><use href="${spriteUrl}#heart"></use></svg>
         </button>
       </li>
       <li>
@@ -76,8 +76,8 @@ function createStars(rating: number): string {
 
     stars += `
       <li class="star-rating-item" style="--fill: ${fill}%">
-        <svg class="star-rating-icon"><use href="${SPRITE_URL}#rating-star"></use></svg>
-        <svg class="star-rating-icon star-rating-icon-fill"><use href="${SPRITE_URL}#rating-star"></use></svg>
+        <svg class="star-rating-icon"><use href="${spriteUrl}#rating-star"></use></svg>
+        <svg class="star-rating-icon star-rating-icon-fill"><use href="${spriteUrl}#rating-star"></use></svg>
       </li>`;
   }
 

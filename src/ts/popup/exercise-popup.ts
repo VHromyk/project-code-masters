@@ -1,6 +1,6 @@
 import { popup } from './popup';
-import { getExerciseById } from './exercise-api';
-import { getErrorMessage } from './http-client';
+import { getExerciseById } from '../exercises/api-exercises';
+import { getErrorMessage } from '../../api/api-errors';
 import { createExerciseMarkup } from './exercise-template';
 import { updateFavoriteButtons } from '../add-to-favorites/favorites-button';
 
