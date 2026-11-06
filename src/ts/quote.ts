@@ -47,9 +47,7 @@ function applyPageModifier(): void {
   const section = document.getElementById('quote-section');
   if (!section) return;
 
-  const isHome =
-    window.location.pathname.endsWith('index.html') ||
-    window.location.pathname === '/';
+  const isHome = !window.location.pathname.includes('favorites');
 
   section.classList.add(
     isHome ? 'quote-section--home' : 'quote-section--favorites'
