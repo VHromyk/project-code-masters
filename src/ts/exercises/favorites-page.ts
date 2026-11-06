@@ -1,4 +1,4 @@
-import { getExerciseById } from '../popup/exercise-api';
+import { getExerciseById } from './api-exercises';
 import type { Exercise } from '../types/exercise';
 import {
   FAVORITES_CHANGED,

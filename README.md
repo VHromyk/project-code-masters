@@ -186,7 +186,7 @@ window.popup.close();
 
 - `src/ts/popup/exercise-popup.ts` — відкриття, завантаження, помилки
 - `src/ts/popup/exercise-template.ts` — розмітка вправи і зірки рейтингу
-- `src/ts/popup/exercise-api.ts`, `src/ts/popup/http-client.ts` — запит до API (axios)
+- `src/ts/exercises/api-exercises.ts`, `src/api/api-errors.ts` — запит до API (axios) та обробка помилок
 - `src/css/popup.css`, `src/css/star-rating.css` — стилі
 
 ### Як відкрити
