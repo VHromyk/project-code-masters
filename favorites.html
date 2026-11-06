@@ -14,11 +14,11 @@
     rel="stylesheet" />
   <script type="module" crossorigin src="/project-code-masters/favorites.js"></script>
   <link rel="modulepreload" crossorigin href="/project-code-masters/assets/vendor-DzSg3hP9.js">
-  <link rel="modulepreload" crossorigin href="/project-code-masters/assets/popups-KGkCyTPO.js">
-  <link rel="modulepreload" crossorigin href="/project-code-masters/assets/scroll-up-3Of5CWBG.js">
-  <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-Ht6N8r9X.css">
-  <link rel="stylesheet" crossorigin href="/project-code-masters/assets/scroll-up-BfwE34L0.css">
-  <link rel="stylesheet" crossorigin href="/project-code-masters/assets/favorites-D-541kQn.css">
+  <link rel="modulepreload" crossorigin href="/project-code-masters/assets/popups-DhFpSBIa.js">
+  <link rel="modulepreload" crossorigin href="/project-code-masters/assets/scroll-up-zTY_zznq.js">
+  <link rel="stylesheet" crossorigin href="/project-code-masters/assets/popups-CfV0Xbif.css">
+  <link rel="stylesheet" crossorigin href="/project-code-masters/assets/scroll-up-DqmbT1GU.css">
+  <link rel="stylesheet" crossorigin href="/project-code-masters/assets/favorites-BWcmdkqS.css">
 </head>
 
 <body>
@@ -137,6 +137,7 @@
 
       <p class="quote__text"></p>
       <p class="quote__author"></p>
+      <div class="loader loader--light" hidden aria-label="Loading"></div>
     </div>
   </div>
 
@@ -170,7 +171,10 @@
 </section>
         </div>
         <div class="page-layout__main">
-          <ul class="favorites__list" id="favorites-list"></ul>
+          <div class="favorites__content">
+            <ul class="favorites__list" id="favorites-list"></ul>
+            <div class="loader" hidden aria-label="Loading"></div>
+          </div>
         </div>
       </div>
     </div>
