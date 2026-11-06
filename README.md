@@ -1,242 +1,287 @@
-# Vanilla App Template
+# YourEnergy — Fitness Exercises Web App
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+> Team educational project by **Code Masters** · GoIT Fullstack Developer program
 
-## Створення репозиторію за шаблоном
+**YourEnergy** is a responsive multi-page web application that helps users find
+exercises for their workouts. Users can browse exercises by muscle group, body
+part or equipment, search by keyword, view detailed exercise info, rate
+exercises, save favorites and subscribe to the newsletter.
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+🔗 **Live demo:** [vhromyk.github.io/project-code-masters](https://vhromyk.github.io/project-code-masters/)
 
-![Creating repo from a template step 1](assetsemplate-step-1.png)
+![YourEnergy — Home page](./docs/screenshots/home-desktop.png)
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+---
 
-![Creating repo from a template step 2](assetsemplate-step-2.png)
+## Table of Contents
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Project Structure](#project-structure)
+- [API](#api)
+- [Getting Started](#getting-started)
+- [Team](#team)
+- [Workflow](#workflow)
 
-![Settings GitHub Actions permissions step 1](assetsh-actions-perm-1.png)
+---
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+## About the Project
 
-![Settings GitHub Actions permissions step 2](assetsh-actions-perm-2.png)
+YourEnergy was built by a team of developers as part of the GoIT
+Fullstack Developer program. We built it the way a commercial project is
+built: from a Figma design and a technical specification, with tasks split
+between team members, Git Flow, pull requests, code review, and a production
+build deployed through GitHub Actions.
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+The specification has two parts:
 
-## Підготовка до роботи
+- **MVP (base version):** the required functionality. We implemented all of it.
+- **Additional features:** optional tasks the team could take on only after
+  the MVP was done. We implemented all of them too (rating, loader and
+  scroll-up).
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+**Key goals:**
 
-## Файли і папки
+- Pixel-perfect layout that follows the Figma design
+- Responsive, mobile-first layout for **mobile, tablet and desktop**
+- Work with a REST API (`GET`, `POST` and `PATCH` requests) using server-side pagination
+- Clean, modular TypeScript code without frameworks
+- Retina-ready images (`@1x` / `@2x`) and SVG icons from a sprite
+- Basic accessibility: semantic HTML, `aria` attributes, and keyboard support in modals
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+---
 
-## Деплой
+## Features
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+### MVP
 
-```json
-"build": "vite build --base=/<REPO>/",
+#### Header
+
+- **Mobile:** logo and a burger menu that opens to the full viewport height,
+  with navigation and social links
+- **Tablet and desktop:** logo, navigation and social links
+- Clicking the logo or **Home** opens the home page, and clicking
+  **Favorites** opens the favorites page
+- Social links are a `<ul>` list with SVG icons that open GoIT's Facebook,
+  Instagram and YouTube pages in a new tab
+
+#### Home page
+
+- **Hero** with static content: the site title, a subtitle, popular tags and images
+- **Filters panel** with the `Muscles`, `Body parts` and `Equipment` buttons.
+  Clicking a filter requests its categories from the backend and highlights
+  that button as active. `Muscles` is selected by default.
+- **Category cards** with an image, a name and a filter type. Clicking a card
+  hides the categories and shows the exercises in that category.
+- **Exercises list.** The section title shows the selected category, and a
+  search field appears next to the filters.
+- **Search** that takes into account the filter, the category, the keyword
+  (applied on submit), the page size and the page number
+- **Server-side pagination**, with the page number and the page size sent as
+  request parameters
+- **Exercise card** with the name, the calories burned in 3 minutes, the body
+  part, the target and the rating, plus a **Start** button that opens the
+  exercise modal
+- **Quote of the Day**, fetched from the backend and cached in `localStorage`
+  together with the date. A new request is made only when the date changes.
+- An info block about why 110 minutes of daily sport matters
+- Messages for when the backend returns no categories or no exercises
+
+#### Exercise modal
+
+- GIF or video demonstration, name, rating, target, body part, popularity,
+  calories burned in 3 minutes and a short description
+- **Add to favorites / Remove from favorites** button that keeps the
+  favorites list in sync with `localStorage`
+- Closes on a backdrop click, on the close button or on `Esc`, and removes
+  its event listeners when it closes
+
+#### Favorites page
+
+- Quote of the Day and an info block about daily sport
+- A list of the exercises the user saved to `localStorage`
+- An exercise card with a **Start** button and a trash button that removes
+  the exercise from favorites without reloading the page
+- A message for when no favorites have been added
+
+#### Footer
+
+- Logo that links to the home page, social links and the company slogan
+- **Newsletter subscription** form with a required email field that is
+  validated with
+  `pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"`. A valid email is sent
+  to the backend, and the response (success, invalid email, already
+  subscribed or network error) is shown to the user.
+
+### Additional features
+
+- **Add rating:** a **Give a rating** button in the exercise modal opens a
+  rating form with star radio buttons, a required email and a comment, all of
+  them required fields. Opening the rating form closes the exercise modal,
+  and closing the rating form reopens it. On a successful backend response the
+  form closes, and on an error the user sees a notification with the error
+  text.
+- **Scroll up:** a button that scrolls back to the top of the page
+- XSS-safe rendering of API data
+
+---
+
+## Tech Stack
+
+| Category       | Technologies                                                              |
+| -------------- | ------------------------------------------------------------------------- |
+| Markup         | HTML5 (partials via `vite-plugin-html-inject`)                            |
+| Styles         | CSS3, CSS custom properties, mobile-first media queries, PostCSS          |
+| Language       | TypeScript                                                                |
+| Build tool     | Vite                                                                      |
+| HTTP           | Axios (shared instance + centralized endpoints)                           |
+| Storage        | `localStorage` (favorites, quote of the day)                              |
+| Deployment     | GitHub Pages + GitHub Actions                                             |
+| Code style     | Prettier, EditorConfig                                                    |
+| Collaboration  | Git, GitHub (feature branches, pull requests, code review), Figma         |
+
+---
+
+## Screenshots
+
+### Home page
+
+| Desktop                                             | Tablet                                            | Mobile                                            |
+| --------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| ![Home desktop](./docs/screenshots/home-desktop.png) | ![Home tablet](./docs/screenshots/home-tablet.png) | ![Home mobile](./docs/screenshots/home-mobile.png) |
+
+### Categories and exercises
+
+![Exercises list](./docs/screenshots/exercises-list.png)
+
+### Search
+
+![Search](./docs/screenshots/search.png)
+
+### Exercise modal and rating form
+
+| Exercise details                                       | Rating form                                       |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| ![Exercise modal](./docs/screenshots/exercise-modal.png) | ![Rating form](./docs/screenshots/rating-form.png) |
+
+### Favorites
+
+| With exercises                                     | Empty state                                            |
+| -------------------------------------------------- | ------------------------------------------------------ |
+| ![Favorites](./docs/screenshots/favorites.png)     | ![Favorites empty](./docs/screenshots/favorites-empty.png) |
+
+### Mobile menu and subscription
+
+| Mobile menu                                          | Subscription                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- |
+| ![Mobile menu](./docs/screenshots/mobile-menu.png)   | ![Subscription](./docs/screenshots/subscription.png) |
+
+---
+
+## Project Structure
+
+```
+src/
+├── api/
+│   ├── config/endpoints.ts   # API endpoints
+│   ├── http.ts               # Axios instance (baseURL, timeout)
+├── css/                      # Styles split by section/component
+├── img/                      # Images (@1x/@2x), SVG sprite
+├── partials/                 # HTML sections (header, hero, filters, ...)
+├── ts/
+│   ├── add-to-favorites/     # Favorites storage and button logic
+│   ├── exercises/            # Exercise cards, pagination, favorites page
+│   ├── filters/              # Filters state and events
+│   ├── popup/                # Exercise modal, rating form, validation
+│   ├── templates/            # Card templates
+│   ├── types/                # TypeScript types
+│   ├── utils/                # Helpers (escape HTML, card limit)
+│   ├── header.ts
+│   ├── quote.ts
+│   ├── subscription.ts
+│   └── scroll-up.ts
+├── index.html                # Home page
+└── favorites.html            # Favorites page
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+---
 
-![GitHub Pages settings](assetsepo-settings.png)
+## API
 
-### Статус деплою
+Base URL: `https://your-energy.b.goit.study/api` ·
+[API docs (Swagger)](https://your-energy.b.goit.study/api-docs)
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+| Method  | Endpoint                 | Description                                 |
+| ------- | ------------------------ | ------------------------------------------- |
+| `GET`   | `/filters`               | Categories by filter (`filter`, `page`, `limit`) |
+| `GET`   | `/exercises`             | Exercises (`bodypart`, `muscles`, `equipment`, `keyword`, `page`, `limit`) |
+| `GET`   | `/exercises/{id}`        | Exercise details                            |
+| `PATCH` | `/exercises/{id}/rating` | Rate an exercise                            |
+| `GET`   | `/quote`                 | Quote of the day                            |
+| `POST`  | `/subscription`          | Newsletter subscription                     |
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+---
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+## Getting Started
 
-![Deployment status](assetseploy-status.png)
+**Requirements:** Node.js LTS
 
-### Жива сторінка
+```bash
+# Clone the repository
+git clone https://github.com/VHromyk/project-code-masters.git
+cd project-code-masters
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
+# Install dependencies
+npm install
 
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
+# Run dev server (http://localhost:5173)
+npm run dev
 
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
+# Production build
+npm run build
 
-## Як це працює
-
-![How it works](assetsow-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
-
-## POPUP
-
-Спливаючі вікна (попапи) працюють через один спільний backdrop, всередині
-якого лежать усі попапи. Відкрити можна з HTML через data-атрибут або з коду.
-
-### Підключення
-
-Усе, що стосується попапів (сам попап, попап вправи, кнопка обраного),
-підключається одним файлом `src/ts/popups.ts`:
-
-```html
-<load src="./partials/popups.html" />
-<script type="module" src="./ts/popups.ts"></script>
+# Preview the build
+npm run preview
 ```
 
-### Файли
+Every push to `main` triggers a GitHub Actions workflow that builds the project
+and deploys it to GitHub Pages.
 
-- `src/ts/popups.ts` — точка входу
-- `src/ts/popup/popup.ts` — логіка (клас `PopupManager`)
-- `src/css/popup.css` — стилі та анімації
-- `src/partials/popups.html` — розмітка backdrop і попапів
+---
 
-### Як додати новий попап
+## Team
 
-Додати блок з `data-popup` і унікальним `id` всередину `.popup-backdrop` у
-`popups.html`:
+| Member                                                     | Role                 | Contribution                                                       |
+| ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------ |
+| [Vitalii Hromyk](https://github.com/VHromyk)               | Team Lead            | Project setup, header, Axios instance, folder architecture, reviews |
+| [Ruslan Mirasov](https://github.com/RuslanMirasov)         | Developer            | Exercise modal, add to favorites, rating form, refactoring         |
+| [Ilona Gil](https://github.com/Gilona-itsme)               | Developer            | Exercise cards, exercise list with pagination, Favorites page      |
+| [Mykola Yanchev](https://github.com/m-yanchev)             | Developer            | Filters block, search, filter state                                |
+| [Alex Shokotko](https://github.com/)                       | Scrum Master         | Favorites feature, scroll-up, loaders, layout fixes                |
+| [Mariia](https://github.com/MariiaMariiaMariya)            | Developer            | Responsive categories, search and pagination                       |
+| [Liudmyla Lytvynova](https://github.com/zwazoo)            | Developer            | Quote of the Day section                                           |
+| [Ali Burzhi](https://github.com/aliburzhi)                 | Developer            | Hero section, scroll-up button                                     |
+| [Oleksandr Shypilov](https://github.com/ashypilovdev)      | Developer            | Footer                                                             |
+| [volvyas](https://github.com/volvyas)                      | Developer            | Category card                                                      |
 
-```html
-<div class="popup medium" data-popup id="add-rating-popup">
-  <button type="button" class="popup-close" data-popup-close>...</button>
-  ...
-</div>
-```
+---
 
-### Як відкрити / закрити
+## Workflow
 
-На прикладі попапу рейтингу:
+- Tasks were split between team members according to the technical
+  specification
+- Each feature was developed in a separate branch (`feature/*`, `bugfix/*`)
+- Changes were merged into `main` only through **pull requests** after code
+  review
+- Shared conventions: HTML partials, global CSS variables in `styles.css`
+  (`--color-*`, `--radius-*`), SVG sprite for icons, common Axios instance and
+  endpoints
 
-```html
-<button type="button" data-popup-open="add-rating-popup">Give a rating</button>
-<button type="button" data-popup-close>Закрити</button>
-```
+---
 
-```ts
-window.popup.open('add-rating-popup');
-window.popup.close();
-```
+## License
 
-### Методи та можливості
-
-| Метод / фіча | Що робить |
-| --- | --- |
-| `window.popup.open(id)` | Відкриває попап за `id` |
-| `window.popup.close()` | Закриває відкритий попап |
-| `data-popup-open="id"` | Відкриває попап по кліку, працює і для елементів, доданих динамічно (делегування) |
-| `data-popup-close` | Закриває попап по кліку (хрестик, кнопка) |
-| Клік по backdrop | Закриває попап, якщо натиснути саме на фон, а не всередині попапа |
-| `Escape` | Закриває попап з клавіатури |
-| Перемикання попапів | Якщо попап вже відкритий, він ховається і відкривається новий, backdrop не зникає |
-| Захист від подвійних кліків | Поки йде анімація (500 мс), нові відкриття/закриття ігноруються |
-| Блокування скролу | На `body` додається клас `locked`, сторінка не скролиться під попапом |
-| Врахування скролбару | При блокуванні додається `padding-right` на ширину скролбару, щоб сторінка не стрибала |
-| Знімання слухачів | Слухачі закриття (клік, `Escape`) додаються при відкритті і знімаються при закритті |
-| Скрол попапа | Якщо попап вищий за екран, його можна прокрутити, на мобільних скрол плавний |
-
-## EXERCISE POPUP
-
-Попап з інформацією про вправу. Дані беруться з бекенду
-(`GET /exercises/{id}`) при відкритті.
-
-### Файли
-
-- `src/ts/popup/exercise-popup.ts` — відкриття, завантаження, помилки
-- `src/ts/popup/exercise-template.ts` — розмітка вправи і зірки рейтингу
-- `src/ts/exercises/api-exercises.ts`, `src/api/api-errors.ts` — запит до API (axios) та обробка помилок
-- `src/css/popup.css`, `src/css/star-rating.css` — стилі
-
-### Як відкрити
-
-Будь-якому елементу додаємо атрибут `data-show-exercise` з `id` вправи:
-
-```html
-<button type="button" data-show-exercise="64f389465ae26083f39b17a2">Start</button>
-```
-
-Працює і для елементів, доданих динамічно.
-
-### Можливості
-
-| Що | Як працює |
-| --- | --- |
-| Лоадер | Поки йде запит, у попапі крутиться спінер |
-| Рейтинг | 5 зірок з частковим заповненням, наприклад 3.85 |
-| Немає даних | Порожні поля не виводяться, замість картинки — `No image available` |
-| Помилки | Немає інтернету, 404 або інша помилка — показується повідомлення |
-| Швидкі кліки | Показується тільки остання відкрита вправа |
-| Give a rating | Перемикає на попап рейтингу |
-| Add to favorites | Додає / видаляє вправу з обраного (див. нижче) |
-
-## ADD TO FAVORITES
-
-Кнопка додає вправу в обране або видаляє її звідти. В `localStorage` під
-ключем `favorites` зберігається масив `id` вправ.
-
-### Файли
-
-- `src/ts/add-to-favorites/favorites-storage.ts` — робота з `localStorage`
-- `src/ts/add-to-favorites/favorites-button.ts` — клік по кнопці
-
-### Як використати
-
-Будь-якому елементу додаємо атрибут `data-add-to-favorites` з `id` вправи:
-
-```html
-<button type="button" data-add-to-favorites="64f389465ae26083f39b17a2">Add to favorites</button>
-```
-
-Працює і для елементів, доданих динамічно.
-
-### Можливості
-
-| Що | Як працює |
-| --- | --- |
-| Клік | Якщо вправи немає в обраному — додає, якщо є — видаляє |
-| Клас `is-favorite` | Додається на кнопку, коли вправа в обраному |
-| `getFavorites()` | Повертає масив `id` з обраного |
-| `isFavorite(id)` | Перевіряє, чи є вправа в обраному |
-| `updateFavoriteButtons(root)` | Ставить правильний стан усім кнопкам у блоці, наприклад після рендеру карток |
+This project was created for educational purposes as part of the
+[GoIT](https://goit.global/) program.
