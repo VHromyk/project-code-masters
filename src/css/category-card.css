@@ -22,8 +22,6 @@
   letter-spacing: -0.02em;
 }
 
-/* Фільтри */
-
 .categories-filters {
   display: flex;
   flex-wrap: wrap;
@@ -54,8 +52,6 @@
   border-radius: 2px;
   background: #242424;
 }
-
-/* Картки */
 
 .categories-list {
   display: grid;
@@ -129,8 +125,6 @@
   display: none;
 }
 
-/* Видимий фокус при навігації клавіатурою */
-
 .categories button:focus-visible {
   outline: 2px solid #242424;
   outline-offset: 4px;
@@ -141,8 +135,6 @@
   outline-offset: -6px;
 }
 
-/* Пагінація категорій */
-
 .categories-pagination {
   display: flex;
   justify-content: center;
@@ -150,7 +142,6 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 32px;
-  padding-bottom: 32px;
 }
 
 .categories-page {
@@ -175,8 +166,6 @@
   border-color: #242424;
   color: #242424;
 }
-
-/* Планшет */
 
 @media (min-width: 768px) {
   .categories {
@@ -217,8 +206,6 @@
     font-size: 16px;
   }
 }
-
-/* Десктоп */
 
 @media (min-width: 1440px) {
   .categories-header {
@@ -269,7 +256,6 @@
     transform: scaleX(1);
   }
 
-  /* Залишаємо місце для номерів сторінок під час запиту. */
   .categories .categories-pagination[hidden] {
     display: flex;
     visibility: hidden;
@@ -285,8 +271,6 @@
       transition: none;
     }
   }
-
-  /* Заголовок Exercises / назва категорії */
 
   .categories-title {
     display: flex;
@@ -412,6 +396,7 @@
 
 }
 
-.page-layout__main > .categories {
+.page-layout__main>.categories {
   padding-top: 0;
+  padding-bottom: 0;
 }
