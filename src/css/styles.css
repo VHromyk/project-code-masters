@@ -154,6 +154,7 @@ img {
   padding: 0 0 80px;
   display: flex;
   flex-direction: column-reverse;
+   gap: 64px;
 }
 
 .page-layout--favorites {
@@ -164,7 +165,7 @@ img {
 @media (min-width: 768px) {
   .page-layout {
     padding: 0 0 100px;
-    gap: 64px;
+    /* gap: 64px; */
   }
 }
 
