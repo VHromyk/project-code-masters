@@ -1,4 +1,4 @@
-import{h as re,A as ne,e as k,f as se,c as ce,r as ie}from"./assets/scroll-up-DyFbDRW-.js";import"./assets/vendor-DzSg3hP9.js";var J=(e=>(e.Muscles="Muscles",e.BodyParts="Body parts",e.Equipment="Equipment",e))(J||{});async function ae(e,t=1,r=12){const{data:n}=await re.get(ne.filters,{params:{filter:e,page:t,limit:r}});return n}const oe=e=>`
+import{h as re,A as ne,e as k,f as se,c as ce,r as ie}from"./assets/scroll-up-CTpkto07.js";import"./assets/vendor-DzSg3hP9.js";var J=(e=>(e.Muscles="Muscles",e.BodyParts="Body parts",e.Equipment="Equipment",e))(J||{});async function ae(e,t=1,r=12){const{data:n}=await re.get(ne.filters,{params:{filter:e,page:t,limit:r}});return n}const oe=e=>`
   <li class="category-card"
       style="background-image: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)), url('${encodeURI(e.imgURL)}')">
     <button class="category-card-btn" type="button"
