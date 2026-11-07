@@ -198,7 +198,7 @@
 
 .filters-block[data-state="categories"] .filters-block-subheader,
 .filters-block[data-state="categories"] .filters-block-search-input-wrapper, 
-.filters-block[data-state="categories"] .filters-block-header>span,
+.filters-block[data-state="categories"] .filters-block-header-link>span,
 .hide {
   display: none;
 }
