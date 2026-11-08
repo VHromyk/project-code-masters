@@ -3,6 +3,7 @@ import type { Exercise, ExerciseOpenDetail, ExercisesParams } from '../types/exe
 import { createExerciseCards } from './exercises-cards';
 import { renderPagination } from './pagination';
 import { cardLimit } from '../utils/card-limit';
+import { writeExercisesQuery } from '../utils/query-params';
 
 const EMPTY_TEXT =
   'Unfortunately, no results were found. You may want to consider other search query parameters to find the exercise you are looking for. Try again.';
@@ -42,9 +43,27 @@ export async function loadExercises(params: ExercisesParams): Promise<void> {
   setLoading(true);
   hideMessage();
 
+  writeExercisesQuery({
+    filter: params.filter,
+    category: params.category,
+    page: params.page,
+    keyword: params.keyword,
+  });
+
   try {
     const data = await fetchExercises(params);
     if (currentRequest !== requestId) return;
+
+    const page = Number(data.page);
+    if (page !== params.page) {
+      writeExercisesQuery({
+        filter: params.filter,
+        category: params.category,
+        page,
+        keyword: params.keyword,
+      });
+      lastParams = { ...params, page };
+    }
 
     data.results.forEach(item => loaded.set(item._id, item));
     list.replaceChildren(...createExerciseCards(data.results, 'home'));
@@ -55,7 +74,7 @@ export async function loadExercises(params: ExercisesParams): Promise<void> {
           : EMPTY_TEXT
       );
     } if (pagination) {
-      renderPagination(pagination, { page: Number(data.page), totalPages: data.totalPages });
+      renderPagination(pagination, { page, totalPages: data.totalPages });
     }
   } catch {
     if (currentRequest !== requestId) return;
