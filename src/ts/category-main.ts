@@ -1,6 +1,13 @@
 import { getCategories } from './category-api';
 import { categoriesListTpl } from './templates/category-card';
 import { cardLimit } from './utils/card-limit';
+import { openCategoryExercises } from './exercises/category-click';
+import {
+  isFilterName,
+  readCategoriesQuery,
+  readExercisesQuery,
+  writeCategoriesQuery,
+} from './utils/query-params';
 
 const section = document.querySelector<HTMLElement>('.categories');
 
@@ -64,6 +71,10 @@ export async function renderCategories(
   currentPage = page;
 
   const currentRequest = ++requestId;
+
+  if (isFilterName(filter)) {
+    writeCategoriesQuery({ filter, page });
+  }
 
   if (filterInput) filterInput.value = filter;
   if (categoryInput) categoryInput.value = '';
@@ -226,5 +237,11 @@ window.matchMedia('(max-width: 767px)')
     );
   });
 
-// Початковий фільтр — Muscles.
-void renderCategories('Muscles', 1, categoriesLimit());
+const exercisesQuery = readExercisesQuery();
+
+if (exercisesQuery) {
+  openCategoryExercises(exercisesQuery);
+} else {
+  const { filter, page } = readCategoriesQuery();
+  void renderCategories(filter, page, categoriesLimit());
+}

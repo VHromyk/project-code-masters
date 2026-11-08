@@ -19,7 +19,10 @@ async function renderExercisesByFormData(form: HTMLFormElement) {
   await loadExercises({ category, filter, keyword, page: 1, limit });
 }
 
-async function renderCategoriesByFilter() { 
+async function renderCategoriesByFilter() {
+  const filterFromInput = refs.filterHideInput?.value as Filter | undefined;
+  if (filterFromInput) currentFilter = filterFromInput;
+
   const limit = categoriesLimit();
   await renderCategories(currentFilter, 1, limit);
 }
