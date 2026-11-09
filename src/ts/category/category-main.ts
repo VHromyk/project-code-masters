@@ -1,13 +1,13 @@
 import { getCategories } from './category-api';
-import { categoriesListTpl } from './templates/category-card';
-import { cardLimit } from './utils/card-limit';
-import { openCategoryExercises } from './exercises/category-click';
+import { categoriesListTpl } from '../templates/category-card';
+import { cardLimit } from '../utils/card-limit';
+import { openCategoryExercises } from '../exercises/category-click';
 import {
   isFilterName,
   readCategoriesQuery,
   readExercisesQuery,
   writeCategoriesQuery,
-} from './utils/query-params';
+} from '../utils/query-params';
 
 const section = document.querySelector<HTMLElement>('.categories');
 

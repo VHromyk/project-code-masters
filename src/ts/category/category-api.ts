@@ -1,6 +1,6 @@
-import type { CategoriesResponse } from './types/category';
-import http from '../api/http';
-import { API_URL } from '../api/config/endpoints';
+import type { CategoriesResponse } from '../types/category';
+import http from '../../api/http';
+import { API_URL } from '../../api/config/endpoints';
 
 export async function getCategories(
   filter: string,
