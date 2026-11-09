@@ -1,13 +1,15 @@
 # YourEnergy — Fitness Exercises Web App
 
-> Team educational project by **Code Masters** · GoIT Fullstack Developer program
+> Team educational project by **Code Masters** · GoIT Fullstack Developer
+> program
 
 **YourEnergy** is a responsive multi-page web application that helps users find
 exercises for their workouts. Users can browse exercises by muscle group, body
 part or equipment, search by keyword, view detailed exercise info, rate
 exercises, save favorites and subscribe to the newsletter.
 
-🔗 **Live demo:** [vhromyk.github.io/project-code-masters](https://vhromyk.github.io/project-code-masters/)
+🔗 **Live demo:**
+[vhromyk.github.io/project-code-masters](https://vhromyk.github.io/project-code-masters/)
 
 ![YourEnergy — Home page](./docs/screenshots/home-desktop.png)
 
@@ -29,27 +31,28 @@ exercises, save favorites and subscribe to the newsletter.
 
 ## About the Project
 
-YourEnergy was built by a team of developers as part of the GoIT
-Fullstack Developer program. We built it the way a commercial project is
-built: from a Figma design and a technical specification, with tasks split
-between team members, Git Flow, pull requests, code review, and a production
-build deployed through GitHub Actions.
+YourEnergy was built by a team of developers as part of the GoIT Fullstack
+Developer program. We built it the way a commercial project is built: from a
+Figma design and a technical specification, with tasks split between team
+members, Git Flow, pull requests, code review, and a production build deployed
+through GitHub Actions.
 
 The specification has two parts:
 
 - **MVP (base version):** the required functionality. We implemented all of it.
-- **Additional features:** optional tasks the team could take on only after
-  the MVP was done. We implemented all of them too (rating, loader and
-  scroll-up).
+- **Additional features:** optional tasks the team could take on only after the
+  MVP was done. We implemented all of them too (rating, loader and scroll-up).
 
 **Key goals:**
 
 - Pixel-perfect layout that follows the Figma design
 - Responsive, mobile-first layout for **mobile, tablet and desktop**
-- Work with a REST API (`GET`, `POST` and `PATCH` requests) using server-side pagination
+- Work with a REST API (`GET`, `POST` and `PATCH` requests) using server-side
+  pagination
 - Clean, modular TypeScript code without frameworks
 - Retina-ready images (`@1x` / `@2x`) and SVG icons from a sprite
-- Basic accessibility: semantic HTML, `aria` attributes, and keyboard support in modals
+- Basic accessibility: semantic HTML, `aria` attributes, and keyboard support in
+  modals
 
 ---
 
@@ -62,17 +65,18 @@ The specification has two parts:
 - **Mobile:** logo and a burger menu that opens to the full viewport height,
   with navigation and social links
 - **Tablet and desktop:** logo, navigation and social links
-- Clicking the logo or **Home** opens the home page, and clicking
-  **Favorites** opens the favorites page
+- Clicking the logo or **Home** opens the home page, and clicking **Favorites**
+  opens the favorites page
 - Social links are a `<ul>` list with SVG icons that open GoIT's Facebook,
   Instagram and YouTube pages in a new tab
 
 #### Home page
 
-- **Hero** with static content: the site title, a subtitle, popular tags and images
+- **Hero** with static content: the site title, a subtitle, popular tags and
+  images
 - **Filters panel** with the `Muscles`, `Body parts` and `Equipment` buttons.
-  Clicking a filter requests its categories from the backend and highlights
-  that button as active. `Muscles` is selected by default.
+  Clicking a filter requests its categories from the backend and highlights that
+  button as active. `Muscles` is selected by default.
 - **Category cards** with an image, a name and a filter type. Clicking a card
   hides the categories and shows the exercises in that category.
 - **Exercises list.** The section title shows the selected category, and a
@@ -93,36 +97,34 @@ The specification has two parts:
 
 - GIF or video demonstration, name, rating, target, body part, popularity,
   calories burned in 3 minutes and a short description
-- **Add to favorites / Remove from favorites** button that keeps the
-  favorites list in sync with `localStorage`
-- Closes on a backdrop click, on the close button or on `Esc`, and removes
-  its event listeners when it closes
+- **Add to favorites / Remove from favorites** button that keeps the favorites
+  list in sync with `localStorage`
+- Closes on a backdrop click, on the close button or on `Esc`, and removes its
+  event listeners when it closes
 
 #### Favorites page
 
 - Quote of the Day and an info block about daily sport
 - A list of the exercises the user saved to `localStorage`
-- An exercise card with a **Start** button and a trash button that removes
-  the exercise from favorites without reloading the page
+- An exercise card with a **Start** button and a trash button that removes the
+  exercise from favorites without reloading the page
 - A message for when no favorites have been added
 
 #### Footer
 
 - Logo that links to the home page, social links and the company slogan
-- **Newsletter subscription** form with a required email field that is
-  validated with
-  `pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"`. A valid email is sent
-  to the backend, and the response (success, invalid email, already
+- **Newsletter subscription** form with a required email field that is validated
+  with `pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"`. A valid email is
+  sent to the backend, and the response (success, invalid email, already
   subscribed or network error) is shown to the user.
 
 ### Additional features
 
 - **Add rating:** a **Give a rating** button in the exercise modal opens a
   rating form with star radio buttons, a required email and a comment, all of
-  them required fields. Opening the rating form closes the exercise modal,
-  and closing the rating form reopens it. On a successful backend response the
-  form closes, and on an error the user sees a notification with the error
-  text.
+  them required fields. Opening the rating form closes the exercise modal, and
+  closing the rating form reopens it. On a successful backend response the form
+  closes, and on an error the user sees a notification with the error text.
 - **Scroll up:** a button that scrolls back to the top of the page
 - XSS-safe rendering of API data
 
@@ -130,17 +132,17 @@ The specification has two parts:
 
 ## Tech Stack
 
-| Category       | Technologies                                                              |
-| -------------- | ------------------------------------------------------------------------- |
-| Markup         | HTML5 (partials via `vite-plugin-html-inject`)                            |
-| Styles         | CSS3, CSS custom properties, mobile-first media queries, PostCSS          |
-| Language       | TypeScript                                                                |
-| Build tool     | Vite                                                                      |
-| HTTP           | Axios (shared instance + centralized endpoints)                           |
-| Storage        | `localStorage` (favorites, quote of the day)                              |
-| Deployment     | GitHub Pages + GitHub Actions                                             |
-| Code style     | Prettier, EditorConfig                                                    |
-| Collaboration  | Git, GitHub (feature branches, pull requests, code review), Figma         |
+| Category      | Technologies                                                      |
+| ------------- | ----------------------------------------------------------------- |
+| Markup        | HTML5 (partials via `vite-plugin-html-inject`)                    |
+| Styles        | CSS3, CSS custom properties, mobile-first media queries, PostCSS  |
+| Language      | TypeScript                                                        |
+| Build tool    | Vite                                                              |
+| HTTP          | Axios (shared instance + centralized endpoints)                   |
+| Storage       | `localStorage` (favorites, quote of the day)                      |
+| Deployment    | GitHub Pages + GitHub Actions                                     |
+| Code style    | Prettier, EditorConfig                                            |
+| Collaboration | Git, GitHub (feature branches, pull requests, code review), Figma |
 
 ---
 
@@ -148,8 +150,8 @@ The specification has two parts:
 
 ### Home page
 
-| Desktop                                             | Tablet                                            | Mobile                                            |
-| --------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| Desktop                                              | Tablet                                             | Mobile                                             |
+| ---------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | ![Home desktop](./docs/screenshots/home-desktop.png) | ![Home tablet](./docs/screenshots/home-tablet.png) | ![Home mobile](./docs/screenshots/home-mobile.png) |
 
 ### Categories and exercises
@@ -162,21 +164,21 @@ The specification has two parts:
 
 ### Exercise modal and rating form
 
-| Exercise details                                       | Rating form                                       |
-| ------------------------------------------------------ | ------------------------------------------------- |
+| Exercise details                                         | Rating form                                        |
+| -------------------------------------------------------- | -------------------------------------------------- |
 | ![Exercise modal](./docs/screenshots/exercise-modal.png) | ![Rating form](./docs/screenshots/rating-form.png) |
 
 ### Favorites
 
-| With exercises                                     | Empty state                                            |
-| -------------------------------------------------- | ------------------------------------------------------ |
-| ![Favorites](./docs/screenshots/favorites.png)     | ![Favorites empty](./docs/screenshots/favorites-empty.png) |
+| With exercises                                 | Empty state                                                |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| ![Favorites](./docs/screenshots/favorites.png) | ![Favorites empty](./docs/screenshots/favorites-empty.png) |
 
 ### Mobile menu and subscription
 
-| Mobile menu                                          | Subscription                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| ![Mobile menu](./docs/screenshots/mobile-menu.png)   | ![Subscription](./docs/screenshots/subscription.png) |
+| Mobile menu                                        | Subscription                                         |
+| -------------------------------------------------- | ---------------------------------------------------- |
+| ![Mobile menu](./docs/screenshots/mobile-menu.png) | ![Subscription](./docs/screenshots/subscription.png) |
 
 ---
 
@@ -213,14 +215,14 @@ src/
 Base URL: `https://your-energy.b.goit.study/api` ·
 [API docs (Swagger)](https://your-energy.b.goit.study/api-docs)
 
-| Method  | Endpoint                 | Description                                 |
-| ------- | ------------------------ | ------------------------------------------- |
-| `GET`   | `/filters`               | Categories by filter (`filter`, `page`, `limit`) |
+| Method  | Endpoint                 | Description                                                                |
+| ------- | ------------------------ | -------------------------------------------------------------------------- |
+| `GET`   | `/filters`               | Categories by filter (`filter`, `page`, `limit`)                           |
 | `GET`   | `/exercises`             | Exercises (`bodypart`, `muscles`, `equipment`, `keyword`, `page`, `limit`) |
-| `GET`   | `/exercises/{id}`        | Exercise details                            |
-| `PATCH` | `/exercises/{id}/rating` | Rate an exercise                            |
-| `GET`   | `/quote`                 | Quote of the day                            |
-| `POST`  | `/subscription`          | Newsletter subscription                     |
+| `GET`   | `/exercises/{id}`        | Exercise details                                                           |
+| `PATCH` | `/exercises/{id}/rating` | Rate an exercise                                                           |
+| `GET`   | `/quote`                 | Quote of the day                                                           |
+| `POST`  | `/subscription`          | Newsletter subscription                                                    |
 
 ---
 
@@ -253,25 +255,24 @@ and deploys it to GitHub Pages.
 
 ## Team
 
-| Member                                                     | Role                 | Contribution                                                       |
-| ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------ |
-| [Vitalii Hromyk](https://github.com/VHromyk)               | Team Lead            | Project setup, header, Axios instance, folder architecture, reviews |
-| [Ruslan Mirasov](https://github.com/RuslanMirasov)         | Developer            | Exercise modal, add to favorites, rating form, refactoring         |
-| [Ilona Gil](https://github.com/Gilona-itsme)               | Developer            | Exercise cards, exercise list with pagination, Favorites page      |
-| [Mykola Yanchev](https://github.com/m-yanchev)             | Developer            | Filters block, search, filter state                                |
-| [Alex Shokotko](https://github.com/)                       | Scrum Master         | Favorites feature, scroll-up, loaders, layout fixes                |
-| [Mariia](https://github.com/MariiaMariiaMariya)            | Developer            | Responsive categories, search and pagination                       |
-| [Liudmyla Lytvynova](https://github.com/zwazoo)            | Developer            | Quote of the Day section                                           |
-| [Ali Burzhi](https://github.com/aliburzhi)                 | Developer            | Hero section, scroll-up button                                     |
-| [Oleksandr Shypilov](https://github.com/ashypilovdev)      | Developer            | Footer                                                             |
-| [volvyas](https://github.com/volvyas)                      | Developer            | Category card                                                      |
+| Member                                                | Role         | Contribution                                                        |
+| ----------------------------------------------------- | ------------ | ------------------------------------------------------------------- |
+| [Vitalii Hromyk](https://github.com/VHromyk)          | Team Lead    | Project setup, header, Axios instance, folder architecture, reviews |
+| [Ruslan Mirasov](https://github.com/RuslanMirasov)    | Developer    | Exercise modal, add to favorites, rating form, refactoring          |
+| [Ilona Gil](https://github.com/Gilona-itsme)          | Developer    | Exercise cards, exercise list with pagination, Favorites page       |
+| [Mykola Yanchev](https://github.com/m-yanchev)        | Developer    | Filters block, search, filter state                                 |
+| [Alex Shokotko](https://github.com/)                  | Scrum Master | Favorites feature, scroll-up, loaders, layout fixes                 |
+| [Mariia](https://github.com/MariiaMariiaMariya)       | Developer    | Responsive categories, search and pagination                        |
+| [Liudmyla Lytvynova](https://github.com/zwazoo)       | Developer    | Quote of the Day section                                            |
+| [Ali Burzhi](https://github.com/aliburzhi)            | Developer    | Hero section, scroll-up button                                      |
+| [Oleksandr Shypilov](https://github.com/ashypilovdev) | Developer    | Footer                                                              |
+| [Volodymyr Sirash](https://github.com/volvyas)        | Developer    | Category card                                                       |
 
 ---
 
 ## Workflow
 
-- Tasks were split between team members according to the technical
-  specification
+- Tasks were split between team members according to the technical specification
 - Each feature was developed in a separate branch (`feature/*`, `bugfix/*`)
 - Changes were merged into `main` only through **pull requests** after code
   review

@@ -1,7 +1,7 @@
 import { Filter } from '../types/filter';
-import { renderCategories } from '../category-main';
+import { renderCategories } from '../category/category-main';
 import { exercisesLimit, loadExercises } from '../exercises/exercises-page';
-import { categoriesLimit } from '../category-main';
+import { categoriesLimit } from '../category/category-main';
 import {
   updateCloseButtonHiding,
   setCurrentFilter,
